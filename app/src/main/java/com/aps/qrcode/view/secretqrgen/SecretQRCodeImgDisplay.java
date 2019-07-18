@@ -124,7 +124,7 @@ public class SecretQRCodeImgDisplay extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Toast.makeText(getApplicationContext(), "QR Code Share 123", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "QR Code Share", Toast.LENGTH_LONG).show();
                     shareQRCode(zXingHelper.createQRImage(QRCodeProperties.QR_CHARACTER_SET,
                             QRCodeProperties.QR_ERROR_CORRECTION_LEVEL,
                             QRCodeProperties.WIDTH,
@@ -163,7 +163,7 @@ public class SecretQRCodeImgDisplay extends AppCompatActivity {
                 generalQrGen.getQrImgName(), generalQrGen.getSecretQr());
     }
 
-    public void shareQRCode(Bitmap bitmap) {
+    protected void shareQRCode(Bitmap bitmap) {
         Dexter.withActivity(SecretQRCodeImgDisplay.this)
                 .withPermissions(Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .withListener(new MultiplePermissionsListener() {
