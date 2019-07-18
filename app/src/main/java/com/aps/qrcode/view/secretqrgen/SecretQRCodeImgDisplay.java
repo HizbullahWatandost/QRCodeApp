@@ -163,6 +163,7 @@ public class SecretQRCodeImgDisplay extends AppCompatActivity {
                 generalQrGen.getQrImgName(), generalQrGen.getSecretQr());
     }
 
+    // this method is used to share QR Code on social medias
     protected void shareQRCode(Bitmap bitmap) {
         Dexter.withActivity(SecretQRCodeImgDisplay.this)
                 .withPermissions(Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE)
