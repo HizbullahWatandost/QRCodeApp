@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Payment QR Code" />
+    <item android:title="Create QR Code Image">
+
+        <menu>
+            <item
+                android:id="@+id/payment_created_qr_nav_history"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="History"
+                />
+            <item
+                android:id="@+id/payment_created_qr_nav_favorite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="Favorite" />
+        </menu>
+    </item>
+    <item android:title="Scanned QR Code Image">
+        <menu>
+            <item
+                android:id="@+id/payment_scanned_qr_nav_history"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="History"
+                />
+            <item
+                android:id="@+id/payment_scanned_qr_nav_favorite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="Favorite" />
+        </menu>
+    </item>
+
+    <item android:title="General QR Code" />
+    <item android:title="Secret QR Code images" >
+        <menu>
+            <item
+                android:id="@+id/secret_created_qr_nav_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="My Secret QRs" />
+            <item
+                android:id="@+id/secret_created_qr_nav_favorite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="My Favorite QRs" />
+            <item
+                android:id="@+id/secret_scanned_qr_nav_histoyr"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="Scanned Secret QRs" />
+
+            <item
+                android:id="@+id/secret_scanned_qr_nav_favorite"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="Scanned Favorite QRs" />
+        </menu>
+    </item>
+    <item android:title="Public QR Images">
+
+        <menu>
+            <item
+                android:id="@+id/secret_nonsecure_create_qr_nav_history"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="My General QRs"
+                />
+            <item
+                android:id="@+id/secret_nonsecure_create_qr_nav_histoyr"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="My Favorite QRs" />
+
+            <item
+                android:id="@+id/secret_nonsecure_scanned_qr_nav_history"
+                android:icon="@drawable/ic_history_black_24dp"
+                android:title="Scanned General QRs"
+                />
+            <item
+                android:id="@+id/secret_nonsecure_scanned_qr_nav_histoyr"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="Favorite Scanned QRs" />
+        </menu>
+    </item>
+
+    <item android:title="QR Code Standard by APS">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings"/>
+            <item
+                android:id="@+id/nav_aboutus"
+                android:icon="@drawable/ic_about_us_black_24dp"
+                android:title="About Us"/>
+            <item
+                android:id="@+id/nav_terms_policy"
+                android:icon="@drawable/ic_policy_black_24dp"
+                android:title="Our Terms and Policy" />
+            <item
+                android:id="@+id/nav_help_feedback"
+                android:icon="@drawable/ic_live_help_black_24dp"
+                android:title="Help and Feedback" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:mContext=".view.secretqrgen.NonPaymentQRContentDisplay">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_vw_qr_update_hing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Please unlock QR Code in order to update it."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/colorPrimary" />
+
+
+            <EditText
+                android:id="@+id/edit_txt_qr_content"
+                style="@style/QRImgGenFormEditTxtStyle"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="top|left"
+                android:hint="Write your messages..."
+                android:inputType="textEmailAddress|textMultiLine"
+                android:lines="15"
+                android:minLines="5"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false" />
+
+            <!-- a view to avoid hiding button while scrolling the layout up -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/btn_qr_unlock"
+                style="@style/QRImgGenFormBtnStyle"
+                android:layout_marginTop="16dp"
+                android:text="Unlock Secret QR Code" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

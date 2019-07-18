@@ -1,0 +1,261 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- spinner background style -->
+    <style name="SpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@color/darkGray</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:dividerPadding">3dp</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="AppTheme">
+        <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
+    </style>
+
+    <!-- style for empty text view in history and favorite activity -->
+    <style name="emptyListTxtViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <!-- QR-IMG placeholder style for displaying QR Code image -->
+    <style name="QRImgPlaceholder">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:src">@drawable/qr_create_icon</item>
+    </style>
+
+    <!-- QR Image name edit text style -->
+    <style name="QRImgNameEditTxtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Give a name for QR Image</item>
+    </style>
+
+    <!-- QR Display linear layout buttons container style -->
+    <style name="QRDisplayLinearLayoutBtnsStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!-- QR Display action btns style -->
+    <style name="QRDisplayActionBtnsStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">7dp</item>
+        <item name="android:paddingEnd">7dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:ems">7</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_marginRight">7dp</item>
+        <item name="android:drawableLeft">@drawable/ic_save_white_24dp</item>
+        <item name="android:background">@drawable/rounded_btn_bg_quick_help</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+    </style>
+
+    <!-- QR Image import placeholder -->
+    <style name="QRImgImportPlaceholder">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">250dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:background">@drawable/qr_img_bg</item>
+    </style>
+
+    <!-- QR Image import icon -->
+    <style name="QRImgImportPlaceholderIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-15dp</item>
+        <item name="android:layout_marginLeft">-15dp</item>
+        <item name="android:src">@drawable/ic_add_a_photo_24dp</item>
+    </style>
+
+    <!-- QR Image import buttons style -->
+    <style name="QRImgImportReadAndScanBtns">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rounded_btn_bg_quick_help</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:minWidth">180dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Floating Action icon linear layout style -->
+    <style name="floatingActionMenuContainerStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">-10dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+    <!-- Floating Action icon name (text view) style -->
+    <style name="floatingActionMenuNameTxtViewStyle">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginRight">-10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:foregroundGravity">center</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:paddingStart">7dp</item>
+        <item name="android:paddingTop">7dp</item>
+        <item name="android:paddingRight">15dp</item>
+        <item name="android:paddingBottom">7dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Floating Action icon img style -->
+    <style name="floatingActionMenuIconStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- Payment QR generate form linear layout container style -->
+    <style name="QRImgGenFormContainerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/qr_bg_style</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">15dp</item>
+    </style>
+
+    <!-- QR Image generate form head text view style -->
+    <style name="QRImgGenHeadTxtViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- QR Image generate form spinner style -->
+    <style name="QRImgGenFormSpinnerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:dropDownVerticalOffset">50dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:theme">@style/SpinnerTheme</item>
+    </style>
+
+    <!-- QR Image generate form edit text style -->
+    <style name="QRImgGenFormEditTxtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/edittext_bg</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- QR Image generate btn style -->
+    <style name="QRImgGenFormBtnStyle">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@drawable/rounded_btn_bg</item>
+        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">20dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+    </style>
+
+    <!-- Payment QR Image Content display form edit text style -->
+    <style name="QRImgContentDisplayFormEditTxtStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:background">@drawable/edittext_bg</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- Recycler Item on click popup style -->
+    <style name="recyclerItemPopupHeadTxtViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_marginTop">5sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Pop up close text view style -->
+    <style name="popupCloseTxtViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_toRightOf">@+id/txt_vw_qr_code_img_name</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- QR Code image place holder style -->
+    <style name="QRImgPlaceHolderStyleInPopUp">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
+
+    <!-- QR Code item operation buttons style in pop up window -->
+    <style name="popupWindowBtnsStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:background">@drawable/rounded_btn_bg_quick_help</item>
+        <item name="android:ems">8</item>
+        <item name="android:maxWidth">150dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+    </style>
+</resources>

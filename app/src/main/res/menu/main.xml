@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/custom_qr"
+        android:icon="@drawable/ic_customqr_white_24dp"
+        android:title="Custom QR Code"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom|withText">
+        <menu>
+            <item
+                android:id="@+id/secret_qr_create"
+                android:orderInCategory="1"
+                android:icon="@drawable/ic_arrow_forward_green_24dp"
+                android:title="Create a secret QR Code"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/secret_qr_scan"
+                android:icon="@drawable/ic_arrow_forward_green_24dp"
+                android:orderInCategory="2"
+                android:title="Scan a secret QR Code"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/create_qr_code"
+                android:orderInCategory="3"
+                android:icon="@drawable/ic_arrow_forward_green_24dp"
+                android:title="Create a QR Code"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/btn_scan_qr_code"
+                android:orderInCategory="4"
+                android:icon="@drawable/ic_arrow_forward_green_24dp"
+                android:title="Create a QR Code"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/langauge_select"
+        android:icon="@drawable/ic_language_white_24dp"
+        android:title="Language Select"
+        android:orderInCategory="2"
+        app:showAsAction="always">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/english_lang_select"
+                    android:icon="@drawable/english_flag_icon"
+                    android:checked="true"
+                    android:orderInCategory="1"
+                    android:title="English" />
+                <item
+                    android:id="@+id/dari_lang_select"
+                    android:icon="@drawable/afghanistan_flag_icon"
+                    android:orderInCategory="2"
+                    android:title="Dari" />
+                <item
+                    android:id="@+id/pashto_lang_select"
+                    android:icon="@drawable/afghanistan_flag_icon"
+                    android:orderInCategory="3"
+                    android:title="Pashto" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/actionbar_settings"
+        android:icon="@drawable/ic_settings_green_24dp"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+</menu>

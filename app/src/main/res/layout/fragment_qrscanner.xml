@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:mContext=".view.QRScannerFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/qr_bg_style">
+
+        <ImageView
+            android:id="@+id/img_vw_qr_scan_clipboard"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_qr_scan_clipboard" />
+
+        <Button
+            android:id="@+id/btn_qr_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_vw_qr_scan_clipboard"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_btn_bg_quick_help"
+            android:drawableLeft="@drawable/ic_qr_scanner_btn"
+            android:drawablePadding="10dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="5dp"
+            android:text="Scan QR Code"
+            android:textColor="@color/whiteSmoke" />
+    </RelativeLayout>
+
+</FrameLayout>

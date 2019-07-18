@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:mContext=".view.secretqrscan.NonPaymentQRCodeScanResult">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/colorPrimary" />
+
+
+            <EditText
+                android:id="@+id/edit_txt_qr_content"
+                style="@style/QRImgGenFormEditTxtStyle"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:gravity="top|left"
+                android:hint="Write your messages..."
+                android:inputType="textEmailAddress|textMultiLine"
+                android:lines="15"
+                android:minLines="5"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false" />
+
+            <TextView
+                android:id="@+id/txt_vw_encryption_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="This QR Code is encrypted with a key, in order to decrypt it click on button below and enter the key you received from the QR Code creator or sender."
+                android:textAlignment="center"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/edit_txt_qr_img_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Save QR Code by a name."
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_qr_decrypt"
+                style="@style/QRImgGenFormBtnStyle"
+                android:layout_marginTop="16dp"
+                android:text="Decrypt QR Code" />
+
+
+            <!-- a view to avoid hiding button while scrolling the layout up -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <!-- an img view which is used to convert the qr content to img view - byte -->
+
+            <ImageView
+                android:id="@+id/img_vw_qr_scan_img_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/qr_action_popup_bg"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingBottom="30dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt_vw_qr_code_img_name"
+            style="@style/recyclerItemPopupHeadTxtViewStyle"
+            android:text="QR Code Image Name" />
+
+        <TextView
+            android:id="@+id/txt_vw_close_qr_action_popup"
+            style="@style/popupCloseTxtViewStyle"
+            android:drawableRight="@drawable/ic_close_black_24dp" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_vw_qr_img"
+        style="@style/QRImgPlaceHolderStyleInPopUp"
+        android:src="@drawable/ic_action_qr_create_icon_aps" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/edit_qr_code"
+            style="@style/popupWindowBtnsStyle"
+            android:drawableLeft="@drawable/ic_edit_black_24dp"
+            android:text="Edit" />
+
+        <Button
+            android:id="@+id/btn_qr_delete"
+            style="@style/popupWindowBtnsStyle"
+            android:drawableLeft="@drawable/ic_delete_black_24dp"
+            android:text="Delete" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_add_qr_to_fav"
+            style="@style/popupWindowBtnsStyle"
+            android:drawableLeft="@drawable/ic_favorite_white_24dp"
+            android:text="Favorite" />
+
+        <Button
+            android:id="@+id/btn_qr_details"
+            style="@style/popupWindowBtnsStyle"
+            android:drawableLeft="@drawable/ic_more_horiz_black_24dp"
+            android:text="Details" />
+    </LinearLayout>
+
+</LinearLayout>
+
+

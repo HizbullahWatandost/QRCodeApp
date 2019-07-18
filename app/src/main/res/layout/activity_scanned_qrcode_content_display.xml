@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGray"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:mContext=".view.secretqrscan.ScannedQRCodeContentDisplay">
+
+    <ImageView
+        android:id="@+id/img_vw_qr_img"
+        style="@style/QRImgPlaceholder" />
+
+    <EditText
+        android:id="@+id/edit_txt_qr_name"
+        style="@style/QRImgNameEditTxtStyle" />
+
+    <LinearLayout style="@style/QRDisplayLinearLayoutBtnsStyle">
+
+        <Button
+            android:id="@+id/btn_qr_save"
+            style="@style/QRDisplayActionBtnsStyle"
+            android:drawableLeft="@drawable/ic_save_white_24dp"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/btn_qr_share"
+            style="@style/QRDisplayActionBtnsStyle"
+            android:drawableLeft="@drawable/ic_share_white_24dp"
+            android:text="Share" />
+
+    </LinearLayout>
+
+    <!-- a view which can be used to avoid hiding the buttons while scrolling up -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+</LinearLayout>

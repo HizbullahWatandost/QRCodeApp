@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:mContext=".view.QRScanResultDisplayActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <LinearLayout style="@style/QRImgGenFormContainerStyle">
+
+            <TextView
+                style="@style/QRImgGenHeadTxtViewStyle"
+                android:text="QR Code Details" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/darkGray" />
+
+            <EditText
+                android:id="@+id/edit_txt_client_type"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:drawableLeft="@drawable/ic_client_type_24dp"
+                android:hint="client type" />
+
+            <EditText
+                android:id="@+id/edit_txt_client_category"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:drawableLeft="@drawable/ic_people_outline_black_24dp"
+                android:hint="client category" />
+
+            <!--
+              Making Edit text uneditable
+              android:clickable="false"
+              android:cursorVisible="false"
+              android:focusable="false"
+              android:focusableInTouchMode="false"-->
+
+            <EditText
+                android:id="@+id/edit_txt_client_company_name"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 123456789"
+                android:drawableLeft="@drawable/ic_person_primay_color_24dp"
+                android:hint="client name" />
+
+
+            <EditText
+                android:id="@+id/edit_txt_mobile"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:drawableLeft="@drawable/ic_phone_primary_color_24dp"
+                android:hint="mobile number" />
+
+            <EditText
+                android:id="@+id/edit_txt_email"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:drawableLeft="@drawable/ic_email_primary_color_24dp"
+                android:hint="email address" />
+
+            <EditText
+                android:id="@+id/edit_txt_client_province"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:drawableLeft="@drawable/ic_my_location_primary_24dp"
+                android:hint="address" />
+
+            <EditText
+                android:id="@+id/edit_txt_client_district"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:drawableLeft="@drawable/ic_my_location_primary_24dp"
+                android:hint="address" />
+
+
+            <EditText
+                android:id="@+id/edit_txt_bank_name"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:drawableLeft="@drawable/ic_bank_primary_24dp"
+                android:hint="bank name" />
+
+            <EditText
+                android:id="@+id/edit_txt_account_number"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:drawableLeft="@drawable/ic_account_number_24dp"
+                android:hint="account number" />
+
+            <EditText
+                android:id="@+id/edit_txt_currency_type"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:drawableLeft="@drawable/ic_currency_type_24dp"
+                android:hint="currency" />
+
+            <EditText
+                android:id="@+id/edit_txt_amount"
+                style="@style/QRImgContentDisplayFormEditTxtStyle"
+                android:layout_marginBottom="20dp"
+                android:drawableLeft="@drawable/ic_money_primary_color_24dp"
+                android:hint="amount"
+                android:inputType="numberDecimal" />
+
+            <CheckBox
+                android:id="@+id/chb_payment_roles_policy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="I accept all the above payment details!"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_proceed_payment_qr"
+                style="@style/QRImgGenFormBtnStyle"
+                android:text="Proceed Payment" />
+            <Button
+                android:id="@+id/btn_save_scanned_qr"
+                style="@style/QRImgGenFormBtnStyle"
+                android:layout_marginTop="16dp"
+                android:text="Save QR Code" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

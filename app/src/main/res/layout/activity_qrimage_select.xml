@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/qr_bg_style"
+    android:layout_margin="20dp"
+    tools:mContext=".view.QRImageSelectActivity">
+
+    <ImageView
+        style="@style/QRImgImportPlaceholder"
+        android:id="@+id/img_vw_qr_import" />
+
+    <ImageView
+        style="@style/QRImgImportPlaceholderIcon"
+        android:id="@+id/img_vw_qr_img_select"
+        android:layout_below="@+id/img_vw_qr_import"
+        android:layout_toRightOf="@+id/img_vw_qr_import" />
+
+    <Button
+        style="@style/QRImgImportReadAndScanBtns"
+        android:id="@+id/btn_read_qr"
+        android:text="Read this QR Code"
+        android:layout_below="@+id/img_vw_qr_import" />
+    <Button
+        style="@style/QRImgImportReadAndScanBtns"
+        android:id="@+id/btn_scan_qr_code"
+        android:text="Scan QR Code"
+        android:layout_below="@+id/btn_read_qr" />
+
+</RelativeLayout>
