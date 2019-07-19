@@ -1,4 +1,4 @@
-package com.aps.qrcode.view.secretqrscan;
+package com.aps.qrcode.view.generalqrscan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,14 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import com.aps.qrcode.view.MainActivity;
 
 
-public class ScanSecretQR extends AppCompatActivity {
+public class ScanGeneralQR extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //requesting the activity to handle the QR Code scanning
-        Intent intent = new Intent(ScanSecretQR.this, MainActivity.class);
+        Intent intent = new Intent(ScanGeneralQR.this, MainActivity.class);
         intent.putExtra("qr_scan_request", "Scan_QRCodePlease");
         startActivity(intent);
 

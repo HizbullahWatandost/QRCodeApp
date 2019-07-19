@@ -74,6 +74,21 @@
             android:label="Create a sercret QR Code"
             android:parentActivityName=".view.MainActivity" />
 
+        <activity android:name=".view.generalqrgen.GeneralQRCreate" />
+        <activity android:name=".view.generalqrgen.GeneralQRCodeDetails" />
+        <activity android:name=".view.generalqrgen.GeneralQRCodeImgDisplay" />
+        <activity android:name=".view.generalqrgen.GeneralQRContentDisplay" />
+        <activity android:name=".view.generalqrgen.GeneralQRGenHistory" />
+        <activity android:name=".view.generalqrgen.GeneralQRGenFavorite" />
+
+        <activity android:name=".view.generalqrscan.ScanGeneralQR" />
+        <activity android:name=".view.generalqrscan.ScannedGeneralQRCodeContentDisplay" />
+        <activity android:name=".view.generalqrscan.GeneralQRCodeScanResult" />
+        <activity android:name=".view.generalqrscan.GeneralQRScanDetails" />
+        <activity android:name=".view.generalqrscan.GeneralQRScanHistory" />
+        <activity android:name=".view.generalqrscan.GeneralQRScanFavorite" />
+
+
         <activity android:name=".view.FavoriteScanQRCodes" />
         <activity android:name=".view.QRScannedUpdateActivity" />
         <activity android:name=".view.QRScannedHistory" />

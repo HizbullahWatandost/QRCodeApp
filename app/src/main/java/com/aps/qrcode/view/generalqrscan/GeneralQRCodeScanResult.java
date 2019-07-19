@@ -1,4 +1,4 @@
-package com.aps.qrcode.view.secretqrscan;
+package com.aps.qrcode.view.generalqrscan;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,7 +30,7 @@ import static com.aps.qrcode.database.DBManager.DATABASE_NAME;
 import static com.aps.qrcode.database.DBManager.DATABASE_VERSION;
 
 
-public class SecretQRCodeScanResult extends AppCompatActivity {
+public class GeneralQRCodeScanResult extends AppCompatActivity {
 
     private final Context context = this;
     private TextView qrInfoTxtView;
@@ -76,7 +76,7 @@ public class SecretQRCodeScanResult extends AppCompatActivity {
             public void onClick(View v) {
                 if (!decrypted) {
                     if (TextUtils.isEmpty(qrContentEditTxt.getText().toString().trim())) {
-                        Toast.makeText(SecretQRCodeScanResult.this, "No content to be decoded!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(GeneralQRCodeScanResult.this, "No content to be decoded!", Toast.LENGTH_LONG).show();
                         return;
                     }
                     // get qr_key_prompt.xml view
@@ -148,18 +148,18 @@ public class SecretQRCodeScanResult extends AppCompatActivity {
                     alertDialog.show();
 
                 } else {
-                    Toast.makeText(SecretQRCodeScanResult.this, "save button", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GeneralQRCodeScanResult.this, "save button", Toast.LENGTH_LONG).show();
                     if (qrNameEditTxt.getText().toString().trim().isEmpty()) {
-                        Toast.makeText(SecretQRCodeScanResult.this, "Please provide a name for your scaned qr code", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GeneralQRCodeScanResult.this, "Please provide a name for your scaned qr code", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     GeneralQrScan generalQrScan = new GeneralQrScan();
                     generalQrScan.setQrImg(qrService.imageViewToByte(qrScanImgHolder));
-                    Toast.makeText(SecretQRCodeScanResult.this, "the content is: " + non_payment_qr_scan_content, Toast.LENGTH_LONG).show();
+                    Toast.makeText(GeneralQRCodeScanResult.this, "the content is: " + non_payment_qr_scan_content, Toast.LENGTH_LONG).show();
                     generalQrScan.setQrImgName(qrNameEditTxt.getText().toString().trim());
                     generalQrScan.setSecretQr(1);
                     saveScannedSecureQR(generalQrScan);
-                    Toast.makeText(SecretQRCodeScanResult.this, "The scanned QR Code successfully saved!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(GeneralQRCodeScanResult.this, "The scanned QR Code successfully saved!", Toast.LENGTH_LONG).show();
                 }
             }
         });

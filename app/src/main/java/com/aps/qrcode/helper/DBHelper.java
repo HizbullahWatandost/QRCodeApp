@@ -780,7 +780,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 generalQrGen.setQrImg(cursor.getBlob(cursor.getColumnIndex(DBManager.GENERATED_QR_IMG)));
                 generalQrGen.setQrImgName(cursor.getString(cursor.getColumnIndex(DBManager.QR_IMG_NAME)));
                 generalQrGen.setTimestamp(cursor.getString(cursor.getColumnIndex(DBManager.QR_IMG_GENERATED_TIMESTAMP)));
-                generalQrGen.setFavoriteQr(cursor.getInt(cursor.getColumnIndex(DBManager.SECRET_QR_CODE)));
                 generalQrGen.setFavoriteQr(cursor.getInt(cursor.getColumnIndex(DBManager.FAVORITE_QR_CODE)));
 
                 generatedSecretQRCodes.add(generalQrGen);
@@ -823,7 +822,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // delete a merchant payment generated QR Code from the table
     public void deleteGeneratedGeneralQrCodeById(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(DBManager.CREATE_GENERAL_QR_CODE_TABLE_NAME, DBManager.QR_ID_COLUMN + " = ? AND " + DBManager.SECRET_QR_CODE + " 0",
+        db.delete(DBManager.CREATE_GENERAL_QR_CODE_TABLE_NAME, DBManager.QR_ID_COLUMN + " = ? AND " + DBManager.SECRET_QR_CODE + " = 0",
                 new String[]{String.valueOf(id)});
         db.close();
     }
@@ -876,7 +875,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 generalQrGen.setQrImg(cursor.getBlob(cursor.getColumnIndex(DBManager.GENERATED_QR_IMG)));
                 generalQrGen.setQrImgName(cursor.getString(cursor.getColumnIndex(DBManager.QR_IMG_NAME)));
                 generalQrGen.setTimestamp(cursor.getString(cursor.getColumnIndex(DBManager.QR_IMG_GENERATED_TIMESTAMP)));
-                generalQrGen.setFavoriteQr(cursor.getInt(cursor.getColumnIndex(DBManager.SECRET_QR_CODE)));
                 generalQrGen.setFavoriteQr(cursor.getInt(cursor.getColumnIndex(DBManager.FAVORITE_QR_CODE)));
 
                 generatedSecretQRCodes.add(generalQrGen);

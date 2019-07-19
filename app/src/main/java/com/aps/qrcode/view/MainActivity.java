@@ -25,6 +25,12 @@ import android.widget.Toast;
 
 import com.aps.qrcode.R;
 import com.aps.qrcode.serviceimpl.QRServiceImpl;
+import com.aps.qrcode.view.generalqrgen.GeneralQRCreate;
+import com.aps.qrcode.view.generalqrgen.GeneralQRGenFavorite;
+import com.aps.qrcode.view.generalqrgen.GeneralQRGenHistory;
+import com.aps.qrcode.view.generalqrscan.GeneralQRScanFavorite;
+import com.aps.qrcode.view.generalqrscan.GeneralQRScanHistory;
+import com.aps.qrcode.view.generalqrscan.ScanGeneralQR;
 import com.aps.qrcode.view.secretqrgen.SecretQRCreate;
 import com.aps.qrcode.view.secretqrgen.SecretQRGenFavorite;
 import com.aps.qrcode.view.secretqrgen.SecretQRGenHistory;
@@ -47,19 +53,18 @@ public class MainActivity extends AppCompatActivity
     private ViewPager viewPager;
 
 
-
-
     private int[] tabIcons = {
             R.drawable.ic_action_qr_create_icon_aps,
             R.drawable.ic_action_qr_scan_aps
     };
     private LinearLayout fab1_container, fab2_container, fab3_container;
-    private Animation fabOpen, fabClose, rotateForward,rotateBackward;
+    private Animation fabOpen, fabClose, rotateForward, rotateBackward;
     private boolean isOpen;
 
     private FloatingActionButton fab;
 
     private QRServiceImpl qrService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,22 +74,22 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager)findViewById(R.id.view_pager);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout)findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
-        fab1_container = (LinearLayout)findViewById(R.id.fab1_container);
-        fab2_container = (LinearLayout)findViewById(R.id.fab2_container);
-        fab3_container = (LinearLayout)findViewById(R.id.fab3_container);
+        fab1_container = (LinearLayout) findViewById(R.id.fab1_container);
+        fab2_container = (LinearLayout) findViewById(R.id.fab2_container);
+        fab3_container = (LinearLayout) findViewById(R.id.fab3_container);
 
-        fabOpen = AnimationUtils.loadAnimation(this,R.anim.fab_open);
-        fabClose = AnimationUtils.loadAnimation(this,R.anim.fab_close);
+        fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
+        fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
 
-        rotateForward = AnimationUtils.loadAnimation(this,R.anim.rotate_forward);
-        rotateBackward = AnimationUtils.loadAnimation(this,R.anim.rotate_backward);
+        rotateForward = AnimationUtils.loadAnimation(this, R.anim.rotate_forward);
+        rotateBackward = AnimationUtils.loadAnimation(this, R.anim.rotate_backward);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         //initiate scan with our custom scan activity
 
         String scan_request = getIntent().getStringExtra("qr_scan_request");
-        if(!TextUtils.isEmpty(scan_request)) {
+        if (!TextUtils.isEmpty(scan_request)) {
             new IntentIntegrator(MainActivity.this).setCaptureActivity(ScannerActivity.class).initiateScan();
         }
 
@@ -118,21 +123,21 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 animateFab();
-                Toast.makeText(MainActivity.this,"Camera clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Camera clicked", Toast.LENGTH_LONG).show();
             }
         });
         fab2_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateFab();
-                Toast.makeText(MainActivity.this,"Folder clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Folder clicked", Toast.LENGTH_LONG).show();
             }
         });
         fab3_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 animateFab();
-                Toast.makeText(MainActivity.this,"Folder clicked",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Folder clicked", Toast.LENGTH_LONG).show();
                 // to test commit testing purpose
             }
         });
@@ -161,18 +166,22 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.secret_qr_create:
                 startActivity(new Intent(MainActivity.this, SecretQRCreate.class));
                 return true;
             case R.id.secret_qr_scan:
-                Toast.makeText(this,"Scan secret QR Code",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MainActivity.this, ScanSecretQR.class));
                 return true;
+            case R.id.general_qr_create:
+                startActivity(new Intent(MainActivity.this, GeneralQRCreate.class));
+                return true;
+            case R.id.general_qr_scan:
+                startActivity(new Intent(MainActivity.this, ScanGeneralQR.class));
             case R.id.english_lang_select:
             case R.id.dari_lang_select:
             case R.id.pashto_lang_select:
-                if(item.isChecked()) item.setChecked(false);
+                if (item.isChecked()) item.setChecked(false);
                 else item.setChecked(true);
                 return true;
             default:
@@ -191,18 +200,26 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, QRCreateHistory.class));
         } else if (id == R.id.payment_created_qr_nav_favorite) {
             startActivity(new Intent(this, FavoriteGenQRCodes.class));
-        } else if (id == R.id.payment_scanned_qr_nav_history){
+        } else if (id == R.id.payment_scanned_qr_nav_history) {
             startActivity(new Intent(this, QRScannedHistory.class));
-        } else if (id == R.id.payment_scanned_qr_nav_favorite){
+        } else if (id == R.id.payment_scanned_qr_nav_favorite) {
             startActivity(new Intent(this, FavoriteScanQRCodes.class));
-        } else if (id == R.id.secret_created_qr_nav_history){
+        } else if (id == R.id.secret_created_qr_nav_history) {
             startActivity(new Intent(this, SecretQRGenHistory.class));
-        } else if(id == R.id.secret_created_qr_nav_favorite){
+        } else if (id == R.id.secret_created_qr_nav_favorite) {
             startActivity(new Intent(this, SecretQRGenFavorite.class));
-        } else if(id == R.id.secret_scanned_qr_nav_histoyr){
+        } else if (id == R.id.secret_scanned_qr_nav_histoyr) {
             startActivity(new Intent(this, SecretQRScanHistory.class));
-        } else if(id == R.id.secret_scanned_qr_nav_favorite){
+        } else if (id == R.id.secret_scanned_qr_nav_favorite) {
             startActivity(new Intent(this, SecretQRScanFavorite.class));
+        } else if (id == R.id.general_create_qr_nav_history) {
+            startActivity(new Intent(this, GeneralQRGenHistory.class));
+        } else if (id == R.id.general_create_qr_nav_favorite) {
+            startActivity(new Intent(this, GeneralQRGenFavorite.class));
+        } else if (id == R.id.general_scanned_qr_nav_history) {
+            startActivity(new Intent(this, GeneralQRScanHistory.class));
+        } else if (id == R.id.general_scanned_qr_nav_favorite) {
+            startActivity(new Intent(this, GeneralQRScanFavorite.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -215,41 +232,35 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
     }
 
-    private void setupViewPager(ViewPager viewPager){
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new QRCreateFragment(), "Create QR Code");
         viewPagerAdapter.addFragment(new QRScannerFragment(), "Scan QR Code");
         viewPager.setAdapter(viewPagerAdapter);
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter{
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+    private void animateFab() {
+        if (isOpen) {
 
-        public ViewPagerAdapter(FragmentManager fm) {
-            super(fm);
+            fab1_container.startAnimation(fabClose);
+            fab2_container.startAnimation(fabClose);
+            fab3_container.startAnimation(fabClose);
+            fab1_container.setClickable(false);
+            fab2_container.setClickable(false);
+            fab3_container.setClickable(false);
+            fab.startAnimation(rotateBackward);
+            isOpen = false;
+        } else {
+
+            fab1_container.startAnimation(fabOpen);
+            fab2_container.startAnimation(fabOpen);
+            fab3_container.startAnimation(fabOpen);
+            fab1_container.setClickable(true);
+            fab2_container.setClickable(true);
+            fab3_container.setClickable(true);
+            fab.startAnimation(rotateForward);
+            isOpen = true;
         }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title){
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position){
-            return mFragmentTitleList.get(position);
-        }
-
     }
 
 
@@ -300,27 +311,33 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void animateFab(){
-        if(isOpen){
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-            fab1_container.startAnimation(fabClose);
-            fab2_container.startAnimation(fabClose);
-            fab3_container.startAnimation(fabClose);
-            fab1_container.setClickable(false);
-            fab2_container.setClickable(false);
-            fab3_container.setClickable(false);
-            fab.startAnimation(rotateBackward);
-            isOpen = false;
-        }else{
-
-            fab1_container.startAnimation(fabOpen);
-            fab2_container.startAnimation(fabOpen);
-            fab3_container.startAnimation(fabOpen);
-            fab1_container.setClickable(true);
-            fab2_container.setClickable(true);
-            fab3_container.setClickable(true);
-            fab.startAnimation(rotateForward);
-            isOpen = true;
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
         }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
     }
 }

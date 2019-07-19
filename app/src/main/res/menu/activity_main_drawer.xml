@@ -58,22 +58,22 @@
 
         <menu>
             <item
-                android:id="@+id/secret_nonsecure_create_qr_nav_history"
+                android:id="@+id/general_create_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
                 android:title="My General QRs"
                 />
             <item
-                android:id="@+id/secret_nonsecure_create_qr_nav_histoyr"
+                android:id="@+id/general_create_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
                 android:title="My Favorite QRs" />
 
             <item
-                android:id="@+id/secret_nonsecure_scanned_qr_nav_history"
+                android:id="@+id/general_scanned_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
                 android:title="Scanned General QRs"
                 />
             <item
-                android:id="@+id/secret_nonsecure_scanned_qr_nav_histoyr"
+                android:id="@+id/general_scanned_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
                 android:title="Favorite Scanned QRs" />
         </menu>
