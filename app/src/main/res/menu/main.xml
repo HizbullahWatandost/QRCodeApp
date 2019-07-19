@@ -24,13 +24,13 @@
                 android:id="@+id/create_qr_code"
                 android:orderInCategory="3"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
-                android:title="Create a QR Code"
+                android:title="Create a general QR Code"
                 app:showAsAction="never" />
             <item
                 android:id="@+id/btn_scan_qr_code"
                 android:orderInCategory="4"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
-                android:title="Create a QR Code"
+                android:title="Scan a general QR Code"
                 app:showAsAction="never" />
         </menu>
     </item>

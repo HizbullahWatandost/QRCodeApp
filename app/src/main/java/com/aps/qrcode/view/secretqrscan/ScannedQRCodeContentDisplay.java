@@ -112,16 +112,6 @@ public class ScannedQRCodeContentDisplay extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
-//                    try {
-//                        shareQRImg(zXingHelper.createQRImage(QRCodeProperties.QR_CHARACTER_SET,
-//                                QRCodeProperties.QR_ERROR_CORRECTION_LEVEL,QRCodeProperties.WIDTH,
-//                                QRCodeProperties.HEIGHT,zXingHelper.qr2Txt(qrImgView)));
-//                    } catch (WriterException e) {
-//                        e.printStackTrace();
-//                    } catch (UnsupportedEncodingException e) {
-//                        e.printStackTrace();
-//                    }
             }
         });
     }

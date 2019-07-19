@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import static com.aps.qrcode.database.DBManager.DATABASE_NAME;
 import static com.aps.qrcode.database.DBManager.DATABASE_VERSION;
 
 
-public class NonPaymentQRCodeScanResult extends AppCompatActivity {
+public class SecretQRCodeScanResult extends AppCompatActivity {
 
     private final Context context = this;
     private TextView qrInfoTxtView;
@@ -54,7 +55,7 @@ public class NonPaymentQRCodeScanResult extends AppCompatActivity {
         qrService = new QRServiceImpl();
         zXingHelper = new ZXingHelper();
 
-        non_payment_qr_scan_content = getIntent().getStringExtra("non_payment_qr_content");
+        non_payment_qr_scan_content = getIntent().getStringExtra("secret_qr_contents");
         Toast.makeText(this, "Scan non payment qr code", Toast.LENGTH_LONG).show();
 
         qrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
@@ -74,12 +75,8 @@ public class NonPaymentQRCodeScanResult extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!decrypted) {
-
-                    // get the qr code content from the edit text
-                    String non_payment_qr_content = qrContentEditTxt.getText().toString().trim();
-
-                    if (non_payment_qr_content.isEmpty()) {
-                        Toast.makeText(NonPaymentQRCodeScanResult.this, "No content to be decoded!", Toast.LENGTH_LONG).show();
+                    if (TextUtils.isEmpty(qrContentEditTxt.getText().toString().trim())) {
+                        Toast.makeText(SecretQRCodeScanResult.this, "No content to be decoded!", Toast.LENGTH_LONG).show();
                         return;
                     }
                     // get qr_key_prompt.xml view
@@ -102,7 +99,7 @@ public class NonPaymentQRCodeScanResult extends AppCompatActivity {
 
                                             String encryptionKey = qrDecryptedContent.substring(startIndexOfEncryptionKey, endIndexOfEncryptionKey);
                                             String decryptionKey = qrPass.getText().toString().trim();
-                                            //Toast.makeText(NonPaymentQRCodeScanResult.this, "QR text: "+qrContentEditTxt.getText().toString(),Toast.LENGTH_LONG).show();
+                                            //Toast.makeText(SecretQRCodeScanResult.this, "QR text: "+qrContentEditTxt.getText().toString(),Toast.LENGTH_LONG).show();
 
                                             //String decryptionKey = qrPass.getText().toString().trim();
                                             //String qrDecryptedContent = qrService.encryptQRCodeContent(qr_content+"\n"+"|*_pass:"+encryptionKey+"_*|");
@@ -116,7 +113,7 @@ public class NonPaymentQRCodeScanResult extends AppCompatActivity {
                                                             QRCodeProperties.QR_ERROR_CORRECTION_LEVEL,
                                                             QRCodeProperties.WIDTH,
                                                             QRCodeProperties.HEIGHT,
-                                                            non_payment_qr_content);
+                                                            non_payment_qr_scan_content);
                                                 } catch (WriterException e) {
                                                     e.printStackTrace();
                                                 } catch (UnsupportedEncodingException e) {
@@ -151,18 +148,18 @@ public class NonPaymentQRCodeScanResult extends AppCompatActivity {
                     alertDialog.show();
 
                 } else {
-                    Toast.makeText(NonPaymentQRCodeScanResult.this, "save button", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SecretQRCodeScanResult.this, "save button", Toast.LENGTH_LONG).show();
                     if (qrNameEditTxt.getText().toString().trim().isEmpty()) {
-                        Toast.makeText(NonPaymentQRCodeScanResult.this, "Please provide a name for your scaned qr code", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SecretQRCodeScanResult.this, "Please provide a name for your scaned qr code", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     GeneralQrScan generalQrScan = new GeneralQrScan();
                     generalQrScan.setQrImg(qrService.imageViewToByte(qrScanImgHolder));
-                    Toast.makeText(NonPaymentQRCodeScanResult.this, "the content is: "+non_payment_qr_scan_content,Toast.LENGTH_LONG).show();
+                    Toast.makeText(SecretQRCodeScanResult.this, "the content is: " + non_payment_qr_scan_content, Toast.LENGTH_LONG).show();
                     generalQrScan.setQrImgName(qrNameEditTxt.getText().toString().trim());
                     generalQrScan.setSecretQr(1);
                     saveScannedSecureQR(generalQrScan);
-                    Toast.makeText(NonPaymentQRCodeScanResult.this, "The scanned QR Code successfully saved!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SecretQRCodeScanResult.this, "The scanned QR Code successfully saved!", Toast.LENGTH_LONG).show();
                 }
             }
         });

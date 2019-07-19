@@ -24,10 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.aps.qrcode.R;
+import com.aps.qrcode.serviceimpl.QRServiceImpl;
 import com.aps.qrcode.view.secretqrgen.SecretQRCreate;
 import com.aps.qrcode.view.secretqrgen.SecretQRGenFavorite;
 import com.aps.qrcode.view.secretqrgen.SecretQRGenHistory;
-import com.aps.qrcode.view.secretqrscan.NonPaymentQRCodeScan;
+import com.aps.qrcode.view.secretqrscan.ScanSecretQR;
+import com.aps.qrcode.view.secretqrscan.SecretQRCodeScanResult;
 import com.aps.qrcode.view.secretqrscan.SecretQRScanFavorite;
 import com.aps.qrcode.view.secretqrscan.SecretQRScanHistory;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
     private int[] tabIcons = {
             R.drawable.ic_action_qr_create_icon_aps,
             R.drawable.ic_action_qr_scan_aps
@@ -55,10 +58,14 @@ public class MainActivity extends AppCompatActivity
     private boolean isOpen;
 
     private FloatingActionButton fab;
+
+    private QRServiceImpl qrService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        qrService = new QRServiceImpl();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -159,10 +166,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, SecretQRCreate.class));
                 return true;
             case R.id.secret_qr_scan:
-                Intent intent = new Intent(MainActivity.this, NonPaymentQRCodeScan.class);
-                intent.putExtra("qr_scan_request", "scan_non_payment_qr_code");
-                startActivity(intent);
                 Toast.makeText(this,"Scan secret QR Code",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this, ScanSecretQR.class));
                 return true;
             case R.id.english_lang_select:
             case R.id.dari_lang_select:
@@ -260,10 +265,34 @@ public class MainActivity extends AppCompatActivity
             if (result.getContents() == null) {
                 Toast.makeText(this, "Scan Cancelled!", Toast.LENGTH_LONG).show();
             } else {
-                //if the scan is successful then, direct it to the QRScanResultDisplayActivity to display the result in form.
-                Intent intent = new Intent(this, QRScanResultDisplayActivity.class);
-                intent.putExtra("qr_contents",result.getContents());
-                startActivity(intent);
+                try {
+                    String scanResult = result.getContents();
+                    // if the first 4 character of the result is 1:01*, then it is payment qr code
+                    String paymentQrIndicator = scanResult.substring(0, 5);
+                    // if it is payment QR Code then send the result to the payment activity to display it
+                    if ("1:01*".equals(paymentQrIndicator)) {
+                        //if the scan is successful then, direct it to the QRScanResultDisplayActivity to display the result in form.
+                        Intent intent = new Intent(this, QRScanResultDisplayActivity.class);
+                        intent.putExtra("qr_contents", result.getContents());
+                        startActivity(intent);
+                    } else { // if it is not payment QR Code, then check whether it is secret QR Code or general QR
+                        String getEncryptionKey = qrService.getSecretQREncryptionKey(scanResult);
+                        // there is encryption key, then it means that, it belongs to secret QR Code.
+                        if (!getEncryptionKey.isEmpty()) {
+                            Intent intent = new Intent(this, SecretQRCodeScanResult.class);
+                            intent.putExtra("secret_qr_contents", result.getContents());
+                            startActivity(intent);
+                        } else { // if there is no encryption key, it simply means that, the QR is a general QR
+                            Intent intent = new Intent(this, SecretQRCodeScanResult.class);
+                            intent.putExtra("general_qr_contents", result.getContents());
+                            startActivity(intent);
+                        }
+
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             // This is important, otherwise the result will not be passed to the activity

@@ -23,9 +23,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.secretqrscan.SecretQRScanFavorite"></activity>
-        <activity android:name=".view.secretqrscan.ScannedQRCodeContentDisplay" />
-        <activity android:name=".view.secretqrscan.SecretQRScanHistory" />
+        <activity
+            android:name=".view.secretqrscan.SecretQRScanFavorite"
+            android:label="Favorite Secret Scanned QRs"
+            android:parentActivityName=".view.MainActivity" />
+        <activity
+            android:name=".view.secretqrscan.ScannedQRCodeContentDisplay"
+            android:label="Scanned QR image"
+            android:parentActivityName=".view.secretqrscan.SecretQRScanHistory" />
+        <activity
+            android:name=".view.secretqrscan.SecretQRScanDetails"
+            android:label="Scanned QR Code Details"
+            android:parentActivityName=".view.secretqrscan.SecretQRScanHistory" />
+
+        <activity
+            android:name=".view.secretqrscan.SecretQRScanHistory"
+            android:label="Secret Scanned QR Codes"
+            android:parentActivityName=".view.MainActivity" />
         <activity
             android:name=".view.secretqrgen.SecretQRGenFavorite"
             android:label="My Favorite Secret QR Codes"
@@ -40,8 +54,11 @@
             android:name=".view.secretqrgen.SecretQRContentDisplay"
             android:label="Updating Secret QR Code"
             android:parentActivityName=".view.secretqrgen.SecretQRGenHistory" />
-        <activity android:name=".view.secretqrscan.NonPaymentQRCodeScanResult" />
-        <activity android:name=".view.secretqrscan.NonPaymentQRCodeScan" />
+        <activity
+            android:name=".view.secretqrscan.SecretQRCodeScanResult"
+            android:label="Secret QR Code Scan Result"
+            android:parentActivityName=".view.secretqrscan.ScanSecretQR" />
+        <activity android:name=".view.secretqrscan.ScanSecretQR" />
         <activity
             android:name=".view.secretqrgen.SecretQRGenHistory"
             android:label="My secret QR Codes"
@@ -114,6 +131,5 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
-
 
 </manifest>

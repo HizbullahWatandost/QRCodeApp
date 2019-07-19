@@ -44,7 +44,7 @@ public class SaveScannedQRImgActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrdisplay);
+        setContentView(R.layout.activity_scanned_qrcode_content_display);
 
 
         db = new DBHelper(this, DATABASE_NAME, null,DATABASE_VERSION);

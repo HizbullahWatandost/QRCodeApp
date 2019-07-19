@@ -78,6 +78,7 @@ public class SecretQRCodeDetails extends QRImgShare {
 
         if (secret_qr_details_by_id != 0 && !QrUnlockBtn.getText().toString().equals("Share") && !unlocked) {
             qrContentEditTxt.setText(generalQrGen.getQrCodeContent());
+            mQrDecryptHint.setText("Please unlock QR Code in order to see its details!");
             QrUnlockBtn.setText("Unlock QR Code Image");
         }
 

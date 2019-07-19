@@ -39,33 +39,38 @@ import static com.aps.qrcode.database.DBManager.DATABASE_VERSION;
 
 public class SecretQRScanFavorite extends AppCompatActivity {
 
-    private DBHelper db;
 
+    //close buttons on popup windows
+    TextView closePopupTxtView, QrImgNameTxtView;
+    ImageView QrImgView;
+    Button editBtn, deleteBtn, addFavoriteBtn, detailsBtn;
+    View layout;
+    private DBHelper db;
     private ScannedGeneralQRCodeAdapter mAdapter;
     private List<GeneralQrScan> generalQrScanList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private TextView noQRGenTxtView;
-
+    private TextView noQRScanTxtView;
     //QR Operations popup window
-    private PopupWindow QRActionPopUp;
-    //close buttons on popup windows
-    TextView btnClosePopupA, QRGenImgName;
-    ImageView QRGenImgView;
-    Button editBtn, deleteBtn, addFavoriteBtn, detailsBtn;
-    View layout;
-
+    private PopupWindow QrActionPopUp;
     private ZXingHelper zXingHelper;
+    //close button for about us popup window
+    private View.OnClickListener cancel_button_click_listenerA = new View.OnClickListener() {
+        public void onClick(View v) {
+            QrActionPopUp.dismiss();
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.custom_qr_codes_list);
 
-        db = new DBHelper(this, DATABASE_NAME, null,DATABASE_VERSION);
+        db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
         generalQrScanList.addAll(db.getAllFavScannedGeneralSecretQrCodes());
 
         recyclerView = findViewById(R.id.recycler_vw_qr_codes_holder);
-        noQRGenTxtView = findViewById(R.id.txt_vw_empty_qr_list);
+        noQRScanTxtView = findViewById(R.id.txt_vw_empty_qr_list);
 
         mAdapter = new ScannedGeneralQRCodeAdapter(this, generalQrScanList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -92,12 +97,9 @@ public class SecretQRScanFavorite extends AppCompatActivity {
             @Override
             public void onLongClick(View view, int position) {
                 qrActionPopup(position);
-                //showActionsDialog(position);
             }
         }));
-
     }
-
 
     /**
      * Toggling list and empty notes view
@@ -106,36 +108,28 @@ public class SecretQRScanFavorite extends AppCompatActivity {
         // you can check notesList.size() > 0
 
         if (db.getScannedFavGeneratedGeneralSecretQrCodesCount() > 0) {
-            noQRGenTxtView.setVisibility(View.GONE);
+            noQRScanTxtView.setVisibility(View.GONE);
         } else {
-            noQRGenTxtView.setText("Empty Secret Favorite Scanned QR Code List!");
-            noQRGenTxtView.setVisibility(View.VISIBLE);
+            noQRScanTxtView.setText("Empty Secret Scanned QR Code List!");
+            noQRScanTxtView.setVisibility(View.VISIBLE);
         }
     }
-    //close button for about us popup window
-    private View.OnClickListener cancel_button_click_listenerA = new View.OnClickListener() {
-        public void onClick(View v) {
-            QRActionPopUp.dismiss();
-
-        }
-    };
 
     // updating employee request
-    public void updateScannededQRCode(int qrGenId){
-        QRActionPopUp.dismiss();
+    public void updateScannededQRCode(int qrGenId) {
+        QrActionPopUp.dismiss();
         Intent intent = new Intent(SecretQRScanFavorite.this, ScannedQRCodeContentDisplay.class);
-        intent.putExtra("scan_qr_id",qrGenId);
-        intent.putExtra("qr_update",true);
+        intent.putExtra("scan_qr_id", qrGenId);
+        intent.putExtra("qr_update", true);
         startActivity(intent);
 
     }
 
     // show the details of QR Code
-    public void showQRCodeDetails(int qrGenId){
-        QRActionPopUp.dismiss();
-        Intent intent = new Intent(SecretQRScanFavorite.this, ScannedQRCodeContentDisplay.class);
-        intent.putExtra("scan_qr_id",qrGenId);
-        intent.putExtra("qr_details", true);
+    public void showQRCodeDetails(int QrScanId) {
+        QrActionPopUp.dismiss();
+        Intent intent = new Intent(SecretQRScanFavorite.this, SecretQRScanDetails.class);
+        intent.putExtra("scanned_qr_id", QrScanId);
         startActivity(intent);
     }
 
@@ -148,7 +142,7 @@ public class SecretQRScanFavorite extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    QRActionPopUp.dismiss();
+                    QrActionPopUp.dismiss();
                     db.deleteScannedGeneralSecretQrCodeById(idRecord);
                     Toast.makeText(SecretQRScanFavorite.this, "Deleted successfully!", Toast.LENGTH_LONG).show();
                     updateRecordListner();
@@ -161,11 +155,12 @@ public class SecretQRScanFavorite extends AppCompatActivity {
         dialogDelete.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                QRActionPopUp.dismiss();
+                QrActionPopUp.dismiss();
                 dialog.dismiss();
             }
         });
         dialogDelete.show();
+
     }
 
     /**
@@ -182,23 +177,23 @@ public class SecretQRScanFavorite extends AppCompatActivity {
             //we need to take the instance of layoutinflator
             LayoutInflater inflater = (LayoutInflater) SecretQRScanFavorite.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             layout = inflater.inflate(R.layout.recycler_item_on_click_popup, (ViewGroup) findViewById(R.id.popup_element));
-            QRActionPopUp = new PopupWindow(layout, (int) (width * .8), (int) (height * .7), true);
-            QRActionPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            btnClosePopupA = (TextView) layout.findViewById(R.id.txt_vw_close_qr_action_popup);
-            QRGenImgName = (TextView) layout.findViewById(R.id.txt_vw_qr_code_img_name);
-            QRGenImgView = (ImageView) layout.findViewById(R.id.img_vw_qr_img);
-            GeneralQrScan non_payment_qr_scan_index = generalQrScanList.get(position);
-            String qr_gen_img_name = non_payment_qr_scan_index.getQrImgName();
-            QRGenImgName.setText(qr_gen_img_name);
-            QRGenImgView.setImageBitmap(BitmapFactory.decodeByteArray(non_payment_qr_scan_index.getQrImg(), 0, non_payment_qr_scan_index.getQrImg().length));
+            QrActionPopUp = new PopupWindow(layout, (int) (width * .8), (int) (height * .7), true);
+            QrActionPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0);
+            closePopupTxtView = (TextView) layout.findViewById(R.id.txt_vw_close_qr_action_popup);
+            QrImgNameTxtView = (TextView) layout.findViewById(R.id.txt_vw_qr_code_img_name);
+            QrImgView = (ImageView) layout.findViewById(R.id.img_vw_qr_img);
+            GeneralQrScan secretQrScanId = generalQrScanList.get(position);
+            String qr_gen_img_name = secretQrScanId.getQrImgName();
+            QrImgNameTxtView.setText(qr_gen_img_name);
+            QrImgView.setImageBitmap(BitmapFactory.decodeByteArray(secretQrScanId.getQrImg(), 0, secretQrScanId.getQrImg().length));
 
-            btnClosePopupA.setOnClickListener(cancel_button_click_listenerA);
+            closePopupTxtView.setOnClickListener(cancel_button_click_listenerA);
 
             editBtn = (Button) layout.findViewById(R.id.edit_qr_code);
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    updateScannededQRCode(non_payment_qr_scan_index.getQrId());
+                    updateScannededQRCode(secretQrScanId.getQrId());
                 }
             });
 
@@ -206,28 +201,28 @@ public class SecretQRScanFavorite extends AppCompatActivity {
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showDialogDelete(non_payment_qr_scan_index.getQrId());
+                    showDialogDelete(secretQrScanId.getQrId());
                 }
             });
 
             addFavoriteBtn = (Button) layout.findViewById(R.id.btn_add_qr_to_fav);
-            if(non_payment_qr_scan_index.getFavoriteQr() == 0) {
+            if (secretQrScanId.getFavoriteQr() == 0) {
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        QRActionPopUp.dismiss();
-                        db.addScannedGeneralSecretQrCodeToFavList(non_payment_qr_scan_index.getQrId());
+                        QrActionPopUp.dismiss();
+                        db.addScannedGeneralSecretQrCodeToFavList(secretQrScanId.getQrId());
                         Toast.makeText(SecretQRScanFavorite.this, "QR Code added to favorite list successfully!", Toast.LENGTH_SHORT).show();
                         updateRecordListner();
                     }
                 });
-            }else{
+            } else {
                 addFavoriteBtn.setText("Remove");
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        QRActionPopUp.dismiss();
-                        db.removeScannedGeneralSecretQrCodeFromFavList(non_payment_qr_scan_index.getQrId());
+                        QrActionPopUp.dismiss();
+                        db.removeScannedGeneralSecretQrCodeFromFavList(secretQrScanId.getQrId());
                         Toast.makeText(SecretQRScanFavorite.this, "QR Code removed from favorite list successfully!", Toast.LENGTH_SHORT).show();
                         updateRecordListner();
                     }
@@ -238,7 +233,7 @@ public class SecretQRScanFavorite extends AppCompatActivity {
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showQRCodeDetails(non_payment_qr_scan_index.getQrId());
+                    showQRCodeDetails(secretQrScanId.getQrId());
                 }
             });
 
@@ -248,7 +243,7 @@ public class SecretQRScanFavorite extends AppCompatActivity {
         }
     }
 
-    private void updateRecordListner(){
+    private void updateRecordListner() {
         //get all data from sqlite
         generalQrScanList.clear();
         generalQrScanList.addAll(db.getAllFavScannedGeneralSecretQrCodes());
