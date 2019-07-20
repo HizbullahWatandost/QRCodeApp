@@ -60,12 +60,12 @@ public class GeneralQRScanDetails extends AppCompatActivity {
 
         GeneralQrScan generalQrScan = db.getScannedGeneralQrCodeById((long) scanned_qr_id);
 
-        qrInfoTxtView.setText("The details of Scanned Secret QR code.");
+        qrInfoTxtView.setText("The details of Scanned QR code.");
         decryptBtn.setText("Next");
 
         qrScanImgHolder.setImageBitmap(BitmapFactory.decodeByteArray(generalQrScan.getQrImg(), 0, generalQrScan.getQrImg().length));
 
-        qrContentEditTxt.setText(qrService.removeEncryptionKeyFromSecretQR(zXingHelper.qr2Txt(qrScanImgHolder)));
+        qrContentEditTxt.setText(zXingHelper.qr2Txt(qrScanImgHolder));
         qrContentEditTxt.setOnKeyListener(null);
         qrContentEditTxt.setFocusable(false);
 

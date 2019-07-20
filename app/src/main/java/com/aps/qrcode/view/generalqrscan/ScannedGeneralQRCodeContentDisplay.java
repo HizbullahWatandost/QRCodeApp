@@ -142,7 +142,7 @@ public class ScannedGeneralQRCodeContentDisplay extends AppCompatActivity {
         GeneralQrScan generalQrScan = new GeneralQrScan();
         generalQrScan.setQrId(qr_scan_id);
         generalQrScan.setQrImgName(qrNameEditTxt.getText().toString().trim());
-        db.updateScannedGeneralSecretQrCode(generalQrScan);
+        db.updateScannedGeneralQrCode(generalQrScan);
     }
 
 }

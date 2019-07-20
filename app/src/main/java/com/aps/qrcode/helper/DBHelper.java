@@ -1092,7 +1092,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     // get number of non payment secret generated payment QR Codes
-    public int getScannedFavGeneratedGeneralSecretQrCodesCount() {
+    public int getScannedFavGeneralSecretQrCodesCount() {
         String countQuery = "SELECT  * FROM " + DBManager.SCAN_GENERAL_QR_CODE_TABLE_NAME + " WHERE " + DBManager.SECRET_QR_CODE + " = 1 AND " + DBManager.FAVORITE_QR_CODE + " = 1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
@@ -1190,7 +1190,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // delete a merchant payment generated QR Code from the table
     public void deleteScannedGeneralQrCodeById(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(DBManager.SCAN_GENERAL_QR_CODE_TABLE_NAME, DBManager.QR_ID_COLUMN + " = ? AND " + DBManager.SECRET_QR_CODE + " 0",
+        db.delete(DBManager.SCAN_GENERAL_QR_CODE_TABLE_NAME, DBManager.QR_ID_COLUMN + " = ? AND " + DBManager.SECRET_QR_CODE + " = 0",
                 new String[]{String.valueOf(id)});
         db.close();
     }
@@ -1256,7 +1256,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     // get number of non payment secret generated payment QR Codes
-    public int getScannedFavGeneratedGeneralQrCodesCount() {
+    public int getScannedFavGeneralQrCodesCount() {
         String countQuery = "SELECT  * FROM " + DBManager.SCAN_GENERAL_QR_CODE_TABLE_NAME + " WHERE " + DBManager.SECRET_QR_CODE + " = 0 AND " + DBManager.FAVORITE_QR_CODE + " = 1";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);

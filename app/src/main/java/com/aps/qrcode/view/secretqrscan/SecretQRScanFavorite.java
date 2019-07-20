@@ -107,7 +107,7 @@ public class SecretQRScanFavorite extends AppCompatActivity {
     private void toggleEmptyPaymentGeneratedQRCode() {
         // you can check notesList.size() > 0
 
-        if (db.getScannedFavGeneratedGeneralSecretQrCodesCount() > 0) {
+        if (db.getScannedFavGeneralSecretQrCodesCount() > 0) {
             noQRScanTxtView.setVisibility(View.GONE);
         } else {
             noQRScanTxtView.setText("Empty Secret Scanned QR Code List!");

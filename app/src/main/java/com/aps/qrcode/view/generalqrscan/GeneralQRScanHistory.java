@@ -67,7 +67,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
         setContentView(R.layout.custom_qr_codes_list);
 
         db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
-        generalQrScanList.addAll(db.getAllScannedGeneralSecretQrCodes());
+        generalQrScanList.addAll(db.getAllScannedGeneralQrCodes());
 
         recyclerView = findViewById(R.id.recycler_vw_qr_codes_holder);
         noQRScanTxtView = findViewById(R.id.txt_vw_empty_qr_list);
@@ -107,10 +107,10 @@ public class GeneralQRScanHistory extends AppCompatActivity {
     private void toggleEmptyPaymentGeneratedQRCode() {
         // you can check notesList.size() > 0
 
-        if (db.getScannedGeneralSecretQrCodesCount() > 0) {
+        if (db.getScannedGeneralQrCodesCount() > 0) {
             noQRScanTxtView.setVisibility(View.GONE);
         } else {
-            noQRScanTxtView.setText("Empty Secret Scanned QR Code List!");
+            noQRScanTxtView.setText("Empty Scanned General QR Code List!");
             noQRScanTxtView.setVisibility(View.VISIBLE);
         }
     }
@@ -143,7 +143,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 try {
                     QrActionPopUp.dismiss();
-                    db.deleteScannedGeneralSecretQrCodeById(idRecord);
+                    db.deleteScannedGeneralQrCodeById(idRecord);
                     Toast.makeText(GeneralQRScanHistory.this, "Deleted successfully!", Toast.LENGTH_LONG).show();
                     updateRecordListner();
                 } catch (Exception e) {
@@ -211,7 +211,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         QrActionPopUp.dismiss();
-                        db.addScannedGeneralSecretQrCodeToFavList(secretQrScanId.getQrId());
+                        db.addScannedGeneralQrCodeToFavList(secretQrScanId.getQrId());
                         Toast.makeText(GeneralQRScanHistory.this, "QR Code added to favorite list successfully!", Toast.LENGTH_SHORT).show();
                         updateRecordListner();
                     }
@@ -222,7 +222,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         QrActionPopUp.dismiss();
-                        db.removeScannedGeneralSecretQrCodeFromFavList(secretQrScanId.getQrId());
+                        db.removeScannedGeneralQrCodeFromFavList(secretQrScanId.getQrId());
                         Toast.makeText(GeneralQRScanHistory.this, "QR Code removed from favorite list successfully!", Toast.LENGTH_SHORT).show();
                         updateRecordListner();
                     }
@@ -246,7 +246,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
     private void updateRecordListner() {
         //get all data from sqlite
         generalQrScanList.clear();
-        generalQrScanList.addAll(db.getAllScannedGeneralSecretQrCodes());
+        generalQrScanList.addAll(db.getAllScannedGeneralQrCodes());
         mAdapter = new ScannedGeneralQRCodeAdapter(this, generalQrScanList);
         mAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(mAdapter);
