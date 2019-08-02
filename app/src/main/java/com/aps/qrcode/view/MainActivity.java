@@ -181,6 +181,8 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.general_qr_scan:
                 startActivity(new Intent(MainActivity.this, ScanGeneralQR.class));
+            case R.id.actionbar_settings:
+                startActivity(new Intent(this, AppSettingsActivity.class));
             case R.id.english_lang_select:
             case R.id.dari_lang_select:
             case R.id.pashto_lang_select:
@@ -197,6 +199,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
 
         if (id == R.id.payment_created_qr_nav_history) {
             // Handle the camera action
@@ -223,6 +226,15 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, GeneralQRScanHistory.class));
         } else if (id == R.id.general_scanned_qr_nav_favorite) {
             startActivity(new Intent(this, GeneralQRScanFavorite.class));
+        } else if (id == R.id.nav_settings) {
+            startActivity(new Intent(this, AppSettingsActivity.class));
+        } else if (id == R.id.nav_share) {
+            //Display Share Via dialogue
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "APS QR Code");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "This QR Code App is awesome):");
+            startActivity(Intent.createChooser(sharingIntent, "Share Via Social Medias"));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

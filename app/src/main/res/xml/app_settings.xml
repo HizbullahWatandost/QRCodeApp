@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="App Customize Settings">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="update_notification"
+            android:summary="By enabling this option, you will receive notification about new updates released. "
+            android:title="Enable Update Notification" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="clipboard_copy"
+            android:summary="The scanned text will be automatically copied to clipboard. Then, you can easily share the scan result."
+            android:title="Copy to clipboard" />
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="App Feature Extendability Settings">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="on_of_lamp"
+            android:title="Turn on lamp while scanning" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="on_of_beep_sound"
+            android:summary="The sound of camera after scanning QR Code Image"
+            android:title="Camer Beep Sound" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
