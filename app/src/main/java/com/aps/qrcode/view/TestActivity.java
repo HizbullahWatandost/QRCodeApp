@@ -11,6 +11,7 @@ public class TestActivity extends AppCompatActivity {
 
     TextView txtView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
