@@ -58,18 +58,18 @@ public class SecretQRCodeScanResult extends AppCompatActivity {
         non_payment_qr_scan_content = getIntent().getStringExtra("secret_qr_contents");
         Toast.makeText(this, "Scan non payment qr code", Toast.LENGTH_LONG).show();
 
-        qrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
+        qrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
 
-        decryptBtn = (Button) findViewById(R.id.btn_qr_decrypt);
+        decryptBtn = findViewById(R.id.btn_qr_decrypt);
 
         qrService = new QRServiceImpl();
 
-        qrInfoTxtView = (TextView) findViewById(R.id.txt_vw_encryption_details);
+        qrInfoTxtView = findViewById(R.id.txt_vw_encryption_details);
 
         qrContentEditTxt.setText(qrService.toNonSenseConverter(non_payment_qr_scan_content));
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_img_name);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_img_name);
 
-        qrScanImgHolder = (ImageView) findViewById(R.id.img_vw_qr_scan_img_holder);
+        qrScanImgHolder = findViewById(R.id.img_vw_qr_scan_img_holder);
 
         decryptBtn.setOnClickListener(new View.OnClickListener() {
             @Override

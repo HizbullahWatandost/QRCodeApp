@@ -14,7 +14,7 @@
 
             <TextView
                 style="@style/QRImgGenHeadTxtViewStyle"
-                android:text="QR Code Details" />
+                android:text="@string/payment_qr_code_details_head" />
 
             <View
                 android:layout_width="match_parent"
@@ -25,13 +25,13 @@
                 android:id="@+id/edit_txt_client_type"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_client_type_24dp"
-                android:hint="client type" />
+                android:hint="@string/client_type" />
 
             <EditText
                 android:id="@+id/edit_txt_client_category"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_people_outline_black_24dp"
-                android:hint="client category" />
+                android:hint="@string/client_category" />
 
             <!--
               Making Edit text uneditable
@@ -45,20 +45,20 @@
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 123456789"
                 android:drawableLeft="@drawable/ic_person_primay_color_24dp"
-                android:hint="client name" />
+                android:hint="@string/client_name" />
 
 
             <EditText
                 android:id="@+id/edit_txt_mobile"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_phone_primary_color_24dp"
-                android:hint="mobile number" />
+                android:hint="@string/mobile_no" />
 
             <EditText
                 android:id="@+id/edit_txt_email"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_email_primary_color_24dp"
-                android:hint="email address" />
+                android:hint="@string/enter_email" />
 
             <EditText
                 android:id="@+id/edit_txt_client_province"
@@ -72,7 +72,7 @@
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:drawableLeft="@drawable/ic_my_location_primary_24dp"
-                android:hint="address" />
+                android:hint="@string/client_address" />
 
 
             <EditText
@@ -80,27 +80,27 @@
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:drawableLeft="@drawable/ic_bank_primary_24dp"
-                android:hint="bank name" />
+                android:hint="@string/bank_name" />
 
             <EditText
                 android:id="@+id/edit_txt_account_number"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_account_number_24dp"
-                android:hint="account number" />
+                android:hint="@string/account_number" />
 
             <EditText
                 android:id="@+id/edit_txt_currency_type"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:drawableLeft="@drawable/ic_currency_type_24dp"
-                android:hint="currency" />
+                android:hint="@string/currency" />
 
             <EditText
                 android:id="@+id/edit_txt_amount"
                 style="@style/QRImgContentDisplayFormEditTxtStyle"
                 android:layout_marginBottom="20dp"
                 android:drawableLeft="@drawable/ic_money_primary_color_24dp"
-                android:hint="amount"
+                android:hint="@string/amount"
                 android:inputType="numberDecimal" />
 
             <CheckBox
@@ -110,18 +110,18 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="I accept all the above payment details!"
+                android:text="@string/accepting_payment_roles_n_policy"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_proceed_payment_qr"
                 style="@style/QRImgGenFormBtnStyle"
-                android:text="Proceed Payment" />
+                android:text="@string/proceed_payment" />
             <Button
                 android:id="@+id/btn_save_scanned_qr"
                 style="@style/QRImgGenFormBtnStyle"
                 android:layout_marginTop="16dp"
-                android:text="Save QR Code" />
+                android:text="@string/qr_save_btn" />
 
         </LinearLayout>
     </ScrollView>

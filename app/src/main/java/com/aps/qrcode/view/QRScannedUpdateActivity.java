@@ -40,9 +40,9 @@ public class QRScannedUpdateActivity extends AppCompatActivity {
         db.queryData(DBManager.PAYMENT_QR_SCAN_TABLE);
 
 
-        qrImgView = (ImageView) findViewById(R.id.img_vw_qr_img);
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_img_name);
-        btnUpdate = (Button) findViewById(R.id.btn_qr_save);
+        qrImgView = findViewById(R.id.img_vw_qr_img);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_img_name);
+        btnUpdate = findViewById(R.id.btn_qr_save);
 
         /**
          * Receiving the QR Code details if the user wants to update the name of the scanned QR Code

@@ -23,7 +23,7 @@
             android:id="@+id/btn_qr_save"
             style="@style/QRDisplayActionBtnsStyle"
             android:drawableLeft="@drawable/ic_save_white_24dp"
-            android:text="Update" />
+            android:text="@string/qr_update_btn" />
 
 
     </LinearLayout>

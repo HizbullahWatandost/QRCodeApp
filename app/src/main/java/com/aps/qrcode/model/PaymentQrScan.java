@@ -6,6 +6,7 @@ import java.util.Arrays;
  * The PaymentQrScan modal class holds all the properties of the payment QR Code image which the user scan to pay.
  */
 public class PaymentQrScan {
+
     private int QrId;
     private byte[] QrImg;
     private String QrImgName;

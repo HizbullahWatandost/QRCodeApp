@@ -25,11 +25,11 @@ public class GeneratedPaymentQRCodeAdapter extends RecyclerView.Adapter<Generate
 
     private Context mContext;
     // Retrieving all the generated QR codes and putting them in merchanGenList
-    private List<PaymentQrGen> paymentQrGenList;
+    private List<PaymentQrGen> mPaymentQrGenList;
 
     public GeneratedPaymentQRCodeAdapter(Context mContext, List<PaymentQrGen> paymentQrGens) {
         this.mContext = mContext;
-        this.paymentQrGenList = paymentQrGens;
+        this.mPaymentQrGenList = paymentQrGens;
     }
 
     /**
@@ -55,7 +55,7 @@ public class GeneratedPaymentQRCodeAdapter extends RecyclerView.Adapter<Generate
      */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PaymentQrGen paymentQrGen = paymentQrGenList.get(position);
+        PaymentQrGen paymentQrGen = mPaymentQrGenList.get(position);
         holder.QrImgView.setImageBitmap(BitmapFactory.decodeByteArray(paymentQrGen.getQrImg(), 0, paymentQrGen.getQrImg().length));
         holder.QrNameTxtView.setText(paymentQrGen.getQrImgName());
 
@@ -70,7 +70,7 @@ public class GeneratedPaymentQRCodeAdapter extends RecyclerView.Adapter<Generate
      */
     @Override
     public int getItemCount() {
-        return paymentQrGenList.size();
+        return mPaymentQrGenList.size();
     }
 
     /**

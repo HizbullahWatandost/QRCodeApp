@@ -25,7 +25,6 @@ import android.widget.Toast;
 import com.aps.qrcode.R;
 import com.aps.qrcode.adapter.GeneratedGeneralQRCodeAdapter;
 import com.aps.qrcode.helper.DBHelper;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrGen;
 import com.aps.qrcode.util.RecyclerDividerItemDecoration;
 import com.aps.qrcode.util.RecyclerItemTouchListener;
@@ -52,7 +51,6 @@ public class SecretQRGenFavorite extends AppCompatActivity {
     private PopupWindow QrActionPopUp;
     Button editBtn, deleteBtn, addFavoriteBtn, detailsBtn;
     View layout;
-    private ZXingHelper zXingHelper;
     //close button for about us popup window
     private View.OnClickListener cancel_button_click_listenerA = new View.OnClickListener() {
         public void onClick(View v) {
@@ -81,8 +79,6 @@ public class SecretQRGenFavorite extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         toggleEmptyPaymentGeneratedQRCode();
-
-        zXingHelper = new ZXingHelper();
 
         /**
          * On long press on RecyclerView item, open alert dialog
@@ -190,7 +186,7 @@ public class SecretQRGenFavorite extends AppCompatActivity {
 
             closePopupTxtView.setOnClickListener(cancel_button_click_listenerA);
 
-            editBtn = (Button) layout.findViewById(R.id.edit_qr_code);
+            editBtn = layout.findViewById(R.id.edit_qr_code);
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -198,7 +194,7 @@ public class SecretQRGenFavorite extends AppCompatActivity {
                 }
             });
 
-            deleteBtn = (Button) layout.findViewById(R.id.btn_qr_delete);
+            deleteBtn = layout.findViewById(R.id.btn_qr_delete);
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -206,7 +202,7 @@ public class SecretQRGenFavorite extends AppCompatActivity {
                 }
             });
 
-            addFavoriteBtn = (Button) layout.findViewById(R.id.btn_add_qr_to_fav);
+            addFavoriteBtn = layout.findViewById(R.id.btn_add_qr_to_fav);
             if (non_payment_qr_gen_index.getFavoriteQr() == 0) {
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -230,7 +226,7 @@ public class SecretQRGenFavorite extends AppCompatActivity {
                 });
             }
 
-            detailsBtn = (Button) layout.findViewById(R.id.btn_qr_details);
+            detailsBtn = layout.findViewById(R.id.btn_qr_details);
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

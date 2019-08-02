@@ -32,8 +32,8 @@ public class SecretQRCreate extends AppCompatActivity {
 
         qrService = new QRServiceImpl();
 
-        mCreatQrBtn = (Button) findViewById(R.id.secret_qr_create_btn);
-        mQrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
+        mCreatQrBtn = findViewById(R.id.secret_qr_create_btn);
+        mQrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
 
 
         mCreatQrBtn.setOnClickListener(new View.OnClickListener() {

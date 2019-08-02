@@ -31,9 +31,7 @@ public class SecretQRScanDetails extends AppCompatActivity {
 
     private DBHelper db;
     private QRServiceImpl qrService;
-    private String qrDecryptedContent;
     private ZXingHelper zXingHelper;
-    private boolean decrypted = false;
 
 
     @Override
@@ -46,15 +44,15 @@ public class SecretQRScanDetails extends AppCompatActivity {
         qrService = new QRServiceImpl();
         zXingHelper = new ZXingHelper();
 
-        qrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
+        qrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
 
-        decryptBtn = (Button) findViewById(R.id.btn_qr_decrypt);
+        decryptBtn = findViewById(R.id.btn_qr_decrypt);
 
         qrService = new QRServiceImpl();
 
-        qrInfoTxtView = (TextView) findViewById(R.id.txt_vw_encryption_details);
+        qrInfoTxtView = findViewById(R.id.txt_vw_encryption_details);
 
-        qrScanImgHolder = (ImageView) findViewById(R.id.img_vw_qr_scan_img_holder);
+        qrScanImgHolder = findViewById(R.id.img_vw_qr_scan_img_holder);
 
         int scanned_qr_id = getIntent().getIntExtra("scanned_qr_id", 0);
 

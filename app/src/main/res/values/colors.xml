@@ -8,4 +8,14 @@
     <color name="darkGray">#cccbcb</color>
     <color name="darkRed">#5b0202</color>
     <color name="colorAccent1">#D81B60</color>
+
+
+    <!-- color for button style -->
+    <color name="gradientStartColor">#008577</color>
+    <color name="gradientEndColor">#00574B</color>
+
+    <!-- color for tabs and screen text -->
+    <color name="tabIndicatorGray">#C0C0C0</color>
+    <color name="introTitleColor">#000000</color>
+    <color name="introDescriptionColor">#656565</color>
 </resources>

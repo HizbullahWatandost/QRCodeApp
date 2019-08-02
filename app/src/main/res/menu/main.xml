@@ -12,25 +12,25 @@
                 android:id="@+id/secret_qr_create"
                 android:orderInCategory="1"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
-                android:title="Create a secret QR Code"
+                android:title="@string/create_a_secret_qr_code"
                 app:showAsAction="never" />
             <item
                 android:id="@+id/secret_qr_scan"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
                 android:orderInCategory="2"
-                android:title="Scan a secret QR Code"
+                android:title="@string/scan_a_secret_qr_code"
                 app:showAsAction="never" />
             <item
                 android:id="@+id/general_qr_create"
                 android:orderInCategory="3"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
-                android:title="Create a general QR Code"
+                android:title="@string/create_a_general_qr_code"
                 app:showAsAction="never" />
             <item
                 android:id="@+id/general_qr_scan"
                 android:orderInCategory="4"
                 android:icon="@drawable/ic_arrow_forward_green_24dp"
-                android:title="Scan a general QR Code"
+                android:title="@string/scan_a_general_qr_code"
                 app:showAsAction="never" />
         </menu>
     </item>
@@ -38,7 +38,7 @@
     <item
         android:id="@+id/langauge_select"
         android:icon="@drawable/ic_language_white_24dp"
-        android:title="Language Select"
+        android:title="@string/language_select"
         android:orderInCategory="2"
         app:showAsAction="always">
         <menu>
@@ -48,17 +48,17 @@
                     android:icon="@drawable/english_flag_icon"
                     android:checked="true"
                     android:orderInCategory="1"
-                    android:title="English" />
+                    android:title="@string/english" />
                 <item
                     android:id="@+id/dari_lang_select"
                     android:icon="@drawable/afghanistan_flag_icon"
                     android:orderInCategory="2"
-                    android:title="Dari" />
+                    android:title="@string/dari" />
                 <item
                     android:id="@+id/pashto_lang_select"
                     android:icon="@drawable/afghanistan_flag_icon"
                     android:orderInCategory="3"
-                    android:title="Pashto" />
+                    android:title="@string/pashto" />
             </group>
         </menu>
     </item>
@@ -66,7 +66,7 @@
     <item
         android:id="@+id/actionbar_settings"
         android:icon="@drawable/ic_settings_green_24dp"
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="never"/>
 
 </menu>

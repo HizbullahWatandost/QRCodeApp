@@ -1,7 +1,6 @@
 package com.aps.qrcode.view.secretqrgen;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -25,7 +23,6 @@ import android.widget.Toast;
 import com.aps.qrcode.R;
 import com.aps.qrcode.adapter.GeneratedGeneralQRCodeAdapter;
 import com.aps.qrcode.helper.DBHelper;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrGen;
 import com.aps.qrcode.util.RecyclerDividerItemDecoration;
 import com.aps.qrcode.util.RecyclerItemTouchListener;
@@ -54,8 +51,6 @@ public class SecretQRGenHistory extends AppCompatActivity {
     Button editBtn, deleteBtn, addFavoriteBtn, detailsBtn;
     View layout;
 
-    private ZXingHelper zXingHelper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +72,6 @@ public class SecretQRGenHistory extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         toggleEmptyPaymentGeneratedQRCode();
-
-        zXingHelper = new ZXingHelper();
 
         /**
          * On long press on RecyclerView item, open alert dialog
@@ -115,7 +108,7 @@ public class SecretQRGenHistory extends AppCompatActivity {
         if (db.getGeneratedGeneralSecretQrCodesCount() > 0) {
             noQRGenTxtView.setVisibility(View.GONE);
         } else {
-            noQRGenTxtView.setText("Empty Generated Secret QR Code List!");
+            noQRGenTxtView.setText(getString(R.string.empty_generated_qr_codes));
             noQRGenTxtView.setVisibility(View.VISIBLE);
         }
     }
@@ -143,26 +136,20 @@ public class SecretQRGenHistory extends AppCompatActivity {
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(SecretQRGenHistory.this);
         dialogDelete.setTitle("Warning!!!");
         dialogDelete.setMessage("Are you sure to delete?");
-        dialogDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                try{
-                    QrActionPopUp.dismiss();
-                    db.deleteGeneratedGeneralSecretQrCodeById(idRecord);
-                    Toast.makeText(SecretQRGenHistory.this, "Deleted successfully!",Toast.LENGTH_LONG).show();
-                    updateRecordListner();
-                }catch (Exception e){
-                    Log.e("Delete Error",e.getMessage());
-                }
+        dialogDelete.setPositiveButton("Yes", (dialog, which) -> {
+            try {
+                QrActionPopUp.dismiss();
+                db.deleteGeneratedGeneralSecretQrCodeById(idRecord);
+                Toast.makeText(SecretQRGenHistory.this, "Deleted successfully!", Toast.LENGTH_LONG).show();
+                updateRecordListner();
+            } catch (Exception e) {
+                Log.e("Delete Error", e.getMessage());
             }
         });
 
-        dialogDelete.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                QrActionPopUp.dismiss();
-                dialog.dismiss();
-            }
+        dialogDelete.setNegativeButton("Cancel", (dialog, which) -> {
+            QrActionPopUp.dismiss();
+            dialog.dismiss();
         });
         dialogDelete.show();
 
@@ -181,12 +168,12 @@ public class SecretQRGenHistory extends AppCompatActivity {
 
             //we need to take the instance of layoutinflator
             LayoutInflater inflater = (LayoutInflater) SecretQRGenHistory.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = inflater.inflate(R.layout.recycler_item_on_click_popup, (ViewGroup) findViewById(R.id.popup_element));
+            layout = inflater.inflate(R.layout.recycler_item_on_click_popup, findViewById(R.id.popup_element));
             QrActionPopUp = new PopupWindow(layout, (int) (width * .8), (int) (height * .7), true);
             QrActionPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            closePopupTxtView = (TextView) layout.findViewById(R.id.txt_vw_close_qr_action_popup);
-            QrImgNameTxtView = (TextView) layout.findViewById(R.id.txt_vw_qr_code_img_name);
-            QrImgView = (ImageView) layout.findViewById(R.id.img_vw_qr_img);
+            closePopupTxtView = layout.findViewById(R.id.txt_vw_close_qr_action_popup);
+            QrImgNameTxtView = layout.findViewById(R.id.txt_vw_qr_code_img_name);
+            QrImgView = layout.findViewById(R.id.img_vw_qr_img);
             GeneralQrGen non_payment_qr_gen_index = generalQrGenList.get(position);
             String qr_gen_img_name = non_payment_qr_gen_index.getQrImgName();
             QrImgNameTxtView.setText(qr_gen_img_name);
@@ -194,7 +181,7 @@ public class SecretQRGenHistory extends AppCompatActivity {
 
             closePopupTxtView.setOnClickListener(cancel_button_click_listenerA);
 
-            editBtn = (Button) layout.findViewById(R.id.edit_qr_code);
+            editBtn = layout.findViewById(R.id.edit_qr_code);
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -202,7 +189,7 @@ public class SecretQRGenHistory extends AppCompatActivity {
                 }
             });
 
-            deleteBtn = (Button) layout.findViewById(R.id.btn_qr_delete);
+            deleteBtn = layout.findViewById(R.id.btn_qr_delete);
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -210,7 +197,7 @@ public class SecretQRGenHistory extends AppCompatActivity {
                 }
             });
 
-            addFavoriteBtn = (Button) layout.findViewById(R.id.btn_add_qr_to_fav);
+            addFavoriteBtn = layout.findViewById(R.id.btn_add_qr_to_fav);
             if(non_payment_qr_gen_index.getFavoriteQr() == 0) {
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -234,7 +221,7 @@ public class SecretQRGenHistory extends AppCompatActivity {
                 });
             }
 
-            detailsBtn = (Button) layout.findViewById(R.id.btn_qr_details);
+            detailsBtn = layout.findViewById(R.id.btn_qr_details);
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

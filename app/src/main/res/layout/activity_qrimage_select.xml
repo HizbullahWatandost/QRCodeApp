@@ -20,12 +20,12 @@
     <Button
         style="@style/QRImgImportReadAndScanBtns"
         android:id="@+id/btn_read_qr"
-        android:text="Read this QR Code"
+        android:text="@string/read_qr_btn"
         android:layout_below="@+id/img_vw_qr_import" />
     <Button
         style="@style/QRImgImportReadAndScanBtns"
         android:id="@+id/btn_scan_qr_code"
-        android:text="Scan QR Code"
+        android:text="@string/scan_qrcode_btn"
         android:layout_below="@+id/btn_read_qr" />
 
 </RelativeLayout>

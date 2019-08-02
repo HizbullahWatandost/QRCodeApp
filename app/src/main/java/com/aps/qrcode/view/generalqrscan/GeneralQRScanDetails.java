@@ -16,7 +16,6 @@ import com.aps.qrcode.database.DBManager;
 import com.aps.qrcode.helper.DBHelper;
 import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrScan;
-import com.aps.qrcode.serviceimpl.QRServiceImpl;
 
 import static com.aps.qrcode.database.DBManager.DATABASE_NAME;
 import static com.aps.qrcode.database.DBManager.DATABASE_VERSION;
@@ -30,10 +29,8 @@ public class GeneralQRScanDetails extends AppCompatActivity {
     private ImageView qrScanImgHolder;
 
     private DBHelper db;
-    private QRServiceImpl qrService;
-    private String qrDecryptedContent;
+
     private ZXingHelper zXingHelper;
-    private boolean decrypted = false;
 
 
     @Override
@@ -43,18 +40,15 @@ public class GeneralQRScanDetails extends AppCompatActivity {
 
         db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
         db.queryData(DBManager.PAYMENT_QR_GEN_TABLE);
-        qrService = new QRServiceImpl();
         zXingHelper = new ZXingHelper();
 
-        qrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
+        qrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
 
-        decryptBtn = (Button) findViewById(R.id.btn_qr_decrypt);
+        decryptBtn = findViewById(R.id.btn_qr_decrypt);
 
-        qrService = new QRServiceImpl();
+        qrInfoTxtView = findViewById(R.id.txt_vw_encryption_details);
 
-        qrInfoTxtView = (TextView) findViewById(R.id.txt_vw_encryption_details);
-
-        qrScanImgHolder = (ImageView) findViewById(R.id.img_vw_qr_scan_img_holder);
+        qrScanImgHolder = findViewById(R.id.img_vw_qr_scan_img_holder);
 
         int scanned_qr_id = getIntent().getIntExtra("scanned_qr_id", 0);
 

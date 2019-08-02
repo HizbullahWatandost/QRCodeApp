@@ -38,7 +38,7 @@
                     android:id="@+id/txt_vw_qr_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Name of QR Code"
+                    android:text="@string/qrcode_name"
                     android:textColor="#000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -50,7 +50,7 @@
                     android:id="@+id/txt_vw_qr_timestamp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Created date"
+                    android:text="@string/qrcode_created_date"
                     android:textColor="#000"
                     android:textSize="20sp" />
             </TableRow>

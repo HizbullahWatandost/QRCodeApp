@@ -3,104 +3,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="Payment QR Code" />
+    <item android:title="@string/payment_qr_code" />
     <item android:title="Create QR Code Image">
 
         <menu>
             <item
                 android:id="@+id/payment_created_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
-                android:title="History"
+                android:title="@string/history"
                 />
             <item
                 android:id="@+id/payment_created_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="Favorite" />
+                android:title="@string/favorite" />
         </menu>
     </item>
-    <item android:title="Scanned QR Code Image">
+    <item android:title="@string/scanned_qr_code_image">
         <menu>
             <item
                 android:id="@+id/payment_scanned_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
-                android:title="History"
+                android:title="@string/history"
                 />
             <item
                 android:id="@+id/payment_scanned_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="Favorite" />
+                android:title="@string/favorite" />
         </menu>
     </item>
 
-    <item android:title="General QR Code" />
-    <item android:title="Secret QR Code images" >
+    <item android:title="@string/general_qr_code" />
+    <item android:title="@string/secret_qr_code_images">
         <menu>
             <item
                 android:id="@+id/secret_created_qr_nav_history"
             android:icon="@drawable/ic_history_black_24dp"
-            android:title="My Secret QRs" />
+                android:title="@string/my_secret_qrs" />
             <item
                 android:id="@+id/secret_created_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="My Favorite QRs" />
+                android:title="@string/my_favorite_qrcodes" />
             <item
                 android:id="@+id/secret_scanned_qr_nav_histoyr"
                 android:icon="@drawable/ic_history_black_24dp"
-                android:title="Scanned Secret QRs" />
+                android:title="@string/scanned_secret_qrs" />
 
             <item
                 android:id="@+id/secret_scanned_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="Scanned Favorite QRs" />
+                android:title="@string/scanned_favorite_qrs" />
         </menu>
     </item>
-    <item android:title="Public QR Images">
+    <item android:title="@string/public_qr_images">
 
         <menu>
             <item
                 android:id="@+id/general_create_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
-                android:title="My General QRs"
+                android:title="@string/my_general_qrs"
                 />
             <item
                 android:id="@+id/general_create_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="My Favorite QRs" />
+                android:title="@string/my_favorite_qrcodes" />
 
             <item
                 android:id="@+id/general_scanned_qr_nav_history"
                 android:icon="@drawable/ic_history_black_24dp"
-                android:title="Scanned General QRs"
+                android:title="@string/scanned_general_qrs"
                 />
             <item
                 android:id="@+id/general_scanned_qr_nav_favorite"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="Favorite Scanned QRs" />
+                android:title="@string/favorite_scanned_qrs" />
         </menu>
     </item>
 
-    <item android:title="QR Code Standard by APS">
+    <item android:title="@string/qr_code_standard_by_aps">
         <menu>
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings_black_24dp"
-                android:title="Settings"/>
+                android:title="@string/settings" />
             <item
                 android:id="@+id/nav_aboutus"
                 android:icon="@drawable/ic_about_us_black_24dp"
-                android:title="About Us"/>
+                android:title="@string/about_us" />
             <item
                 android:id="@+id/nav_terms_policy"
                 android:icon="@drawable/ic_policy_black_24dp"
-                android:title="Our Terms and Policy" />
+                android:title="@string/our_terms_and_policy" />
             <item
                 android:id="@+id/nav_help_feedback"
                 android:icon="@drawable/ic_live_help_black_24dp"
-                android:title="Help and Feedback" />
+                android:title="@string/help_and_feedback" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/share" />
         </menu>
     </item>
 

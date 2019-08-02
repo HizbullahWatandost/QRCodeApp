@@ -57,10 +57,10 @@ public class SaveScannedQRImgActivity extends AppCompatActivity {
          */
         String qrCreateContent = getIntent().getStringExtra("scannedQRImgDetails");
 
-        qrImgView = (ImageView) findViewById(R.id.img_vw_qr_img);
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_name);
-        btnSave = (Button) findViewById(R.id.btn_qr_save);
-        btnShare = (Button) findViewById(R.id.btn_qr_share);
+        qrImgView = findViewById(R.id.img_vw_qr_img);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_name);
+        btnSave = findViewById(R.id.btn_qr_save);
+        btnShare = findViewById(R.id.btn_qr_share);
 
         /**
          * Receiving the QR Code details if the user wants to update the QR Code

@@ -1,99 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">APS QRCode</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">QR Code Standard By APS</string>
-    <string name="nav_header_subtitle">Your Payments Partner</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-
-    <string name="qr_gen_notice">Create QR Code</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="qr_create_head">Generate QR Code For Payment</string>
-    <string name="client_name">Enter your name</string>
-
-    <string-array name="qr_code_owner">
-        <item>- Select the QR Code owner -</item>
-        <item>Personal / Individual</item>
-        <item>Corporate / Organization / Company</item>
-    </string-array>
-
-    <string-array name="company_category">
-        <item>- Select the company category -</item>
-        <item>Shopkeeper</item>
-        <item>Driver</item>
-        <item>University</item>
-        <item>Electricity Bill</item>
-        <item>Water Bill</item>
-        <item>Direct Fund Transfer</item>
-    </string-array>
-
-    <string name="merchant_address">Select your Address</string>
-    <string-array name="province">
-        <item>- Select the province -</item>
-        <item>Kabul</item>
-        <item>Mazar</item>
-        <item>Herat</item>
-        <item>Kunduz</item>
-        <item>Takhar</item>
-        <item>Qandhar</item>
-        <item>Laghman</item>
-    </string-array>
-
-    <string-array name="kabul_districts">
-        <item>- Kabul Districts -</item>
-        <item>Bagrami</item>
-        <item>Char Asiab</item>
-        <item>Deh Sabz</item>
-        <item>Farza</item>
-        <item>Guldara</item>
-        <item>Istalif</item>
-        <item>Khaki Jabbar</item>
-    </string-array>
-
-    <string-array name="mazar_districts">
-        <item>- Mazar Districts -</item>
-        <item>Balkh</item>
-        <item>Char Bolak</item>
-        <item>Chimtal</item>
-        <item>Charkint</item>
-        <item>Dawlatabad</item>
-        <item>Khuml</item>
-        <item>Mazar-e-Sharif</item>
-        <item>Sholgara</item>
-        <item>Zari</item>
-    </string-array>
-
-
-    <string-array name="bank_members">
-        <item>- Select the bank -</item>
-        <item>Azizi Bank</item>
-        <item>Pashtany Bank</item>
-        <item>Islamic Bank of Afghanistan</item>
-        <item>Bank Millie</item>
-        <item>Ghazanfar Bank</item>
-    </string-array>
-
-
-    <!-- image pickup msgs -->
-    <string name="msg_error_unable_select_profile_pic">Unable to select a QR Code image. Please try again!</string>
-    <string name="lbl_set_profile_photo">Select a QR Code image</string>
-    <string name="lbl_take_camera_picture">Take the QR Code Picture</string>
-    <string name="lbl_choose_from_gallery">Choose from gallery</string>
-    <string name="toast_image_intent_null">Image picker option is missing!</string>
-
-    <!-- font families -->
-    <string name="font_family_light">sans-serif-light</string>
-    <string name="font_family_medium">sans-serif-medium</string>
-    <string name="font_family_regular">sans-serif</string>
-    <string name="font_family_condensed">sans-serif-condensed</string>
-    <string name="font_family_black">sans-serif-black</string>
-    <string name="font_family_thin">sans-serif-thin</string>
-    <string name="dialog_permission_title">Grant Permissions</string>
-    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
-    <string name="go_to_settings">GOTO SETTINGS</string>
     <string name="unlock_qr_code_prompt">Please unlock QR Code in order to update it.</string>
     <string name="qr_content_hint">Write your messages...</string>
     <string name="unlock_qr_btn">Unlock Secret QR Code</string>
@@ -134,10 +40,10 @@
     <string name="qr_code_image_name_placeholder">QR Code Image Name</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="favorite">Favorite</string>
     <string name="details">Details</string>
     <string name="payment_qr_code">Payment QR Code</string>
     <string name="history">History</string>
-    <string name="favorite">Favorite</string>
     <string name="scanned_qr_code_image">Scanned QR Code Image</string>
     <string name="general_qr_code">General QR Code</string>
     <string name="secret_qr_code_images">Secret QR Code images</string>

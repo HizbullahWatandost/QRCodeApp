@@ -184,9 +184,9 @@ public class FavoriteGenQRCodes extends AppCompatActivity {
             layout = inflater.inflate(R.layout.recycler_item_on_click_popup, (ViewGroup) findViewById(R.id.popup_element));
             QRActionPopUp = new PopupWindow(layout, (int) (width * .8), (int) (height * .7), true);
             QRActionPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            btnClosePopupA = (TextView) layout.findViewById(R.id.txt_vw_close_qr_action_popup);
-            QRGenImgName = (TextView) layout.findViewById(R.id.txt_vw_qr_code_img_name);
-            QRGenImgView = (ImageView) layout.findViewById(R.id.img_vw_qr_img);
+            btnClosePopupA = layout.findViewById(R.id.txt_vw_close_qr_action_popup);
+            QRGenImgName = layout.findViewById(R.id.txt_vw_qr_code_img_name);
+            QRGenImgView = layout.findViewById(R.id.img_vw_qr_img);
             PaymentQrGen qr_gen_index = favoriteQRLists.get(position);
             String qr_gen_img_name = qr_gen_index.getQrImgName();
             QRGenImgName.setText(qr_gen_img_name);
@@ -194,7 +194,7 @@ public class FavoriteGenQRCodes extends AppCompatActivity {
 
             btnClosePopupA.setOnClickListener(cancel_button_click_listenerA);
 
-            editBtn = (Button) layout.findViewById(R.id.edit_qr_code);
+            editBtn = layout.findViewById(R.id.edit_qr_code);
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -204,7 +204,7 @@ public class FavoriteGenQRCodes extends AppCompatActivity {
                 }
             });
 
-            deleteBtn = (Button) layout.findViewById(R.id.btn_qr_delete);
+            deleteBtn = layout.findViewById(R.id.btn_qr_delete);
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -212,7 +212,7 @@ public class FavoriteGenQRCodes extends AppCompatActivity {
                 }
             });
 
-            addFavoriteBtn = (Button) layout.findViewById(R.id.btn_add_qr_to_fav);
+            addFavoriteBtn = layout.findViewById(R.id.btn_add_qr_to_fav);
             if(qr_gen_index.getFavQrGen() == 0) {
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -236,7 +236,7 @@ public class FavoriteGenQRCodes extends AppCompatActivity {
                 });
             }
 
-            detailsBtn = (Button) layout.findViewById(R.id.btn_qr_details);
+            detailsBtn = layout.findViewById(R.id.btn_qr_details);
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

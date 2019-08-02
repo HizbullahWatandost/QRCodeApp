@@ -19,7 +19,6 @@ import com.aps.qrcode.database.DBManager;
 import com.aps.qrcode.helper.DBHelper;
 import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrScan;
-import com.aps.qrcode.serviceimpl.QRServiceImpl;
 import com.aps.qrcode.util.QRCodeProperties;
 import com.google.zxing.WriterException;
 import com.karumi.dexter.Dexter;
@@ -42,10 +41,8 @@ public class ScannedGeneralQRCodeContentDisplay extends AppCompatActivity {
     private ImageView qrImgView;
     private EditText qrNameEditTxt;
     private Button btnSave, btnShare;
-    private String qrCreateContent;
     private DBHelper db;
     private ZXingHelper zXingHelper;
-    private QRServiceImpl qrService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +53,12 @@ public class ScannedGeneralQRCodeContentDisplay extends AppCompatActivity {
         db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
         db.queryData(DBManager.GENERAL_QR_SCAN_TABLE);
         zXingHelper = new ZXingHelper();
-        qrService = new QRServiceImpl();
 
 
-        qrImgView = (ImageView) findViewById(R.id.img_vw_qr_img);
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_name);
-        btnSave = (Button) findViewById(R.id.btn_qr_save);
-        btnShare = (Button) findViewById(R.id.btn_qr_share);
+        qrImgView = findViewById(R.id.img_vw_qr_img);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_name);
+        btnSave = findViewById(R.id.btn_qr_save);
+        btnShare = findViewById(R.id.btn_qr_share);
 
         // getting scanned qr id through intent to display its content or update it
         qr_scan_id = getIntent().getIntExtra("scan_qr_id", 0);

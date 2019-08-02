@@ -31,7 +31,7 @@ public class QRScannerFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_qrscanner, container, false);
 
-        qr_scan_btn = (Button) view.findViewById(R.id.btn_qr_scan);
+        qr_scan_btn = view.findViewById(R.id.btn_qr_scan);
         qr_scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -25,7 +25,6 @@ import android.widget.Toast;
 import com.aps.qrcode.R;
 import com.aps.qrcode.adapter.GeneratedGeneralQRCodeAdapter;
 import com.aps.qrcode.helper.DBHelper;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrGen;
 import com.aps.qrcode.util.RecyclerDividerItemDecoration;
 import com.aps.qrcode.util.RecyclerItemTouchListener;
@@ -51,7 +50,6 @@ public class GeneralQRGenHistory extends AppCompatActivity {
     private TextView noQRGenTxtView;
     //QR Operations popup window
     private PopupWindow QrActionPopUp;
-    private ZXingHelper zXingHelper;
     //close button for about us popup window
     private View.OnClickListener cancel_button_click_listenerA = new View.OnClickListener() {
         public void onClick(View v) {
@@ -80,8 +78,6 @@ public class GeneralQRGenHistory extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         toggleEmptyPaymentGeneratedQRCode();
-
-        zXingHelper = new ZXingHelper();
 
         /**
          * On long press on RecyclerView item, open alert dialog

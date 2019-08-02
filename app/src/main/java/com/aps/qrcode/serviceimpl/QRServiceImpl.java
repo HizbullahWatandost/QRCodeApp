@@ -77,8 +77,8 @@ public class QRServiceImpl implements QRService {
 
     @Override
     public String getSecretQREncryptionKey(String qr_content) {
-        String qrDecryptedContent= decryptQRCodeContent(qr_content);
-        int startIndexOfEncryptionKey = qrDecryptedContent.indexOf("|*_pass:")+("|*_pass:").length();
+        String qrDecryptedContent = decryptQRCodeContent(qr_content);
+        int startIndexOfEncryptionKey = qrDecryptedContent.indexOf("|*_pass:") + ("|*_pass:").length();
         int endIndexOfEncryptionKey = qrDecryptedContent.lastIndexOf("_*|");
         String encryptionKey = qrDecryptedContent.substring(startIndexOfEncryptionKey, endIndexOfEncryptionKey);
         return encryptionKey;
@@ -86,14 +86,14 @@ public class QRServiceImpl implements QRService {
 
     @Override
     public String removeEncryptionKeyFromSecretQR(String qr_content) {
-        String qrDecryptedContent= decryptQRCodeContent(qr_content);
-        String decryptedQrContent = qrDecryptedContent.substring(0,qrDecryptedContent.indexOf("|*_pass:"));
+        String qrDecryptedContent = decryptQRCodeContent(qr_content);
+        String decryptedQrContent = qrDecryptedContent.substring(0, qrDecryptedContent.indexOf("|*_pass:"));
         return decryptedQrContent;
     }
 
     @Override
     public String addEncryptionKeyToQR(String qr_pass) {
-        return encryptQRCodeContent(" |*_pass:"+qr_pass+"_*| ");
+        return encryptQRCodeContent(" |*_pass:" + qr_pass + "_*| ");
     }
 
 

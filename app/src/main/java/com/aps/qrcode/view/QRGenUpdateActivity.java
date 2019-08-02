@@ -34,23 +34,23 @@ public class QRGenUpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_qr_contents_displayer);
 
-        clientTypeEditTxt = (EditText) findViewById(R.id.edit_txt_client_type);
-        clientCategoryEditTxt = (EditText) findViewById(R.id.edit_txt_client_category);
-        clientCompanyNameEditTxt = (EditText) findViewById(R.id.edit_txt_client_company_name);
-        mobileEditTxt = (EditText) findViewById(R.id.edit_txt_mobile);
-        emailEditTxt = (EditText) findViewById(R.id.edit_txt_email);
-        province = (EditText) findViewById(R.id.edit_txt_client_province);
-        district = (EditText) findViewById(R.id.edit_txt_client_district);
-        bankNameEditTxt = (EditText) findViewById(R.id.edit_txt_bank_name);
-        accountNumberEditTxt = (EditText) findViewById(R.id.edit_txt_account_number);
-        currencyTypeEditTxt = (EditText) findViewById(R.id.edit_txt_currency_type);
-        amountEditTxt = (EditText) findViewById(R.id.edit_txt_amount);
+        clientTypeEditTxt = findViewById(R.id.edit_txt_client_type);
+        clientCategoryEditTxt = findViewById(R.id.edit_txt_client_category);
+        clientCompanyNameEditTxt = findViewById(R.id.edit_txt_client_company_name);
+        mobileEditTxt = findViewById(R.id.edit_txt_mobile);
+        emailEditTxt = findViewById(R.id.edit_txt_email);
+        province = findViewById(R.id.edit_txt_client_province);
+        district = findViewById(R.id.edit_txt_client_district);
+        bankNameEditTxt = findViewById(R.id.edit_txt_bank_name);
+        accountNumberEditTxt = findViewById(R.id.edit_txt_account_number);
+        currencyTypeEditTxt = findViewById(R.id.edit_txt_currency_type);
+        amountEditTxt = findViewById(R.id.edit_txt_amount);
 
-        paymentRolesAndPolicyCheckBox = (CheckBox) findViewById(R.id.chb_payment_roles_policy);
+        paymentRolesAndPolicyCheckBox = findViewById(R.id.chb_payment_roles_policy);
         paymentRolesAndPolicyCheckBox.setVisibility(View.GONE);
 
-        nextBtn = (Button) findViewById(R.id.btn_proceed_payment_qr);
-        qrScannedSaveBtn = (Button) findViewById(R.id.btn_save_scanned_qr);
+        nextBtn = findViewById(R.id.btn_proceed_payment_qr);
+        qrScannedSaveBtn = findViewById(R.id.btn_save_scanned_qr);
         qrScannedSaveBtn.setVisibility(View.GONE);
 
         db = new DBHelper(this, DATABASE_NAME, null,DATABASE_VERSION);

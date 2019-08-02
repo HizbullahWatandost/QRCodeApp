@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aps.qrcode.R;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrGen;
 
 import java.text.ParseException;
@@ -22,13 +21,12 @@ import java.util.List;
 public class GeneratedGeneralQRCodeAdapter extends RecyclerView.Adapter<GeneratedGeneralQRCodeAdapter.MyViewHolder> {
 
     private Context mContext;
-    // Retrieving all the nonpayment generated QR codes and putting them in merchanGenList
-    private List<GeneralQrGen> generalQrGenList;
-    private ZXingHelper zXingHelper;
+    // Retrieving all the general generated QR codes and putting them in merchanGenList
+    private List<GeneralQrGen> mGeneralQrGenList;
 
     public GeneratedGeneralQRCodeAdapter(Context mContext, List<GeneralQrGen> generalQrGens) {
         this.mContext = mContext;
-        this.generalQrGenList = generalQrGens;
+        this.mGeneralQrGenList = generalQrGens;
     }
 
     /**
@@ -54,7 +52,7 @@ public class GeneratedGeneralQRCodeAdapter extends RecyclerView.Adapter<Generate
      */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        GeneralQrGen generalQrGen = generalQrGenList.get(position);
+        GeneralQrGen generalQrGen = mGeneralQrGenList.get(position);
         holder.QrImgView.setImageBitmap(BitmapFactory.decodeByteArray(generalQrGen.getQrImg(), 0, generalQrGen.getQrImg().length));
         holder.QrNameTxtView.setText(generalQrGen.getQrImgName());
         // Formatting and displaying timestamp
@@ -68,7 +66,7 @@ public class GeneratedGeneralQRCodeAdapter extends RecyclerView.Adapter<Generate
      */
     @Override
     public int getItemCount() {
-        return generalQrGenList.size();
+        return mGeneralQrGenList.size();
     }
 
     /**

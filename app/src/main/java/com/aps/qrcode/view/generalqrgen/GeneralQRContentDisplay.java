@@ -32,10 +32,10 @@ public class GeneralQRContentDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_non_payment_qrcontent_display);
 
-        mSecretQrUpdateBtn = (Button) findViewById(R.id.btn_qr_unlock);
+        mSecretQrUpdateBtn = findViewById(R.id.btn_qr_unlock);
         mSecretQrUpdateBtn.setText("Update QR Code");
-        mQrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
-        mQrUpdateHintTxtView = (TextView) findViewById(R.id.txt_vw_qr_update_hing);
+        mQrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
+        mQrUpdateHintTxtView = findViewById(R.id.txt_vw_qr_update_hing);
         mQrUpdateHintTxtView.setVisibility(View.GONE);
 
         db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);

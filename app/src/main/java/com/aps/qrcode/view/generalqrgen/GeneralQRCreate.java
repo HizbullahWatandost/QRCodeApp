@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aps.qrcode.R;
-import com.aps.qrcode.serviceimpl.QRServiceImpl;
 
 
 public class GeneralQRCreate extends AppCompatActivity {
@@ -20,7 +19,6 @@ public class GeneralQRCreate extends AppCompatActivity {
     private Button mCreatQrBtn;
     private EditText mQrContentEditTxt;
     private TextView mQrCreateHint;
-    private QRServiceImpl qrService;
 
 
     @Override
@@ -28,11 +26,9 @@ public class GeneralQRCreate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secret_qrcreate);
 
-        qrService = new QRServiceImpl();
-
-        mCreatQrBtn = (Button) findViewById(R.id.secret_qr_create_btn);
-        mQrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
-        mQrCreateHint = (TextView) findViewById(R.id.qr_create_hint);
+        mCreatQrBtn = findViewById(R.id.secret_qr_create_btn);
+        mQrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
+        mQrCreateHint = findViewById(R.id.qr_create_hint);
         mQrCreateHint.setVisibility(View.GONE);
 
         mCreatQrBtn.setOnClickListener(new View.OnClickListener() {

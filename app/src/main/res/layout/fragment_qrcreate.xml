@@ -44,20 +44,20 @@
                 style="@style/QRImgGenFormEditTxtStyle"
                 android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 123456789"
                 android:drawableLeft="@drawable/ic_company_name_primary_color_24dp"
-                android:hint="Enter your company name"
+                android:hint="@string/company_name"
                 android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_txt_mobile"
                 style="@style/QRImgGenFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_phone_primary_color_24dp"
-                android:hint="Enter mobile number" />
+                android:hint="@string/mobile_no" />
 
             <EditText
                 android:id="@+id/edit_txt_email"
                 style="@style/QRImgGenFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_email_primary_color_24dp"
-                android:hint="Enter email" />
+                android:hint="@string/enter_email" />
 
             <Spinner
                 android:id="@+id/spinner_province"
@@ -75,14 +75,14 @@
                 android:id="@+id/edit_txt_account_number"
                 style="@style/QRImgGenFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_account_number_24dp"
-                android:hint="Enter the account number" />
+                android:hint="@string/enter_the_account_number" />
 
             <TextView
                 android:id="@+id/txt_vw_currency_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Select the currency: " />
+                android:text="@string/currency_select" />
 
             <RadioGroup
                 android:id="@+id/rg_currency"
@@ -94,21 +94,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Afghani (Afn)" />
+                    android:text="@string/afghani_currency" />
 
                 <RadioButton
                     android:id="@+id/rb_currency_dolor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:text="US Dollor (USD)" />
+                    android:text="@string/dolor_currency" />
             </RadioGroup>
 
             <EditText
                 android:id="@+id/edit_txt_amount"
                 style="@style/QRImgGenFormEditTxtStyle"
                 android:drawableLeft="@drawable/ic_money_primary_color_24dp"
-                android:hint="Enter the amount"
+                android:hint="@string/enter_the_amount"
                 android:inputType="numberDecimal" />
 
             <CheckBox
@@ -118,13 +118,13 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="I accept all the APS QR Code roles and policy"
+                android:text="@string/accepting_roles_n_policy"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_qr_create"
                 style="@style/QRImgGenFormBtnStyle"
-                android:text="Create QR Code" />
+                android:text="@string/qrcode_create_btn" />
 
         </LinearLayout>
     </ScrollView>

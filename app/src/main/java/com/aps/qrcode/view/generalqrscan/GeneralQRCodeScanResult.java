@@ -55,22 +55,22 @@ public class GeneralQRCodeScanResult extends AppCompatActivity {
         general_qr_scan_content = getIntent().getStringExtra("general_qr_contents");
         Toast.makeText(this, "Scan non payment qr code", Toast.LENGTH_LONG).show();
 
-        qrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
+        qrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
 
-        decryptBtn = (Button) findViewById(R.id.btn_qr_decrypt);
+        decryptBtn = findViewById(R.id.btn_qr_decrypt);
         decryptBtn.setText("Save Scanned QR Code");
 
         qrService = new QRServiceImpl();
 
-        qrInfoTxtView = (TextView) findViewById(R.id.txt_vw_encryption_details);
+        qrInfoTxtView = findViewById(R.id.txt_vw_encryption_details);
         qrInfoTxtView.setVisibility(View.GONE);
 
         qrContentEditTxt.setText(general_qr_scan_content);
         qrContentEditTxt.setOnKeyListener(null);
         qrContentEditTxt.setFocusable(false);
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_img_name);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_img_name);
 
-        qrScanImgHolder = (ImageView) findViewById(R.id.img_vw_qr_scan_img_holder);
+        qrScanImgHolder = findViewById(R.id.img_vw_qr_scan_img_holder);
 
 
         Bitmap bitmap = null;

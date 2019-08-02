@@ -23,13 +23,13 @@
             android:id="@+id/btn_qr_save"
             style="@style/QRDisplayActionBtnsStyle"
             android:drawableLeft="@drawable/ic_save_white_24dp"
-            android:text="Save" />
+            android:text="@string/qr_save_btn" />
 
         <Button
             android:id="@+id/btn_qr_share"
             style="@style/QRDisplayActionBtnsStyle"
             android:drawableLeft="@drawable/ic_share_white_24dp"
-            android:text="Share" />
+            android:text="@string/qr_share" />
 
     </LinearLayout>
 

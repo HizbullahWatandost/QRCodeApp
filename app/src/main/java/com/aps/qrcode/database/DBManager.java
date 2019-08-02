@@ -76,25 +76,27 @@ public class DBManager {
                     + FAVORITE_QR_CODE + " INTEGER DEFAULT 0"
                     + ")";
 
+    // this table holds all the secret and general generated QR Codes
     public static final String GENERAL_QR_GEN_TABLE =
-            "CREATE TABLE IF NOT EXISTS "+ CREATE_GENERAL_QR_CODE_TABLE_NAME +"("
-                    + QR_ID_COLUMN +" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + GENERAL_QR_CODE_CONTENT +" VARCHAR(1500), "
-                    + GENERATED_QR_IMG +" BLOB, "
-                    + QR_IMG_NAME +" VARCHAR(50), "
-                    + QR_IMG_GENERATED_TIMESTAMP +" DATETIME DEFAULT CURRENT_TIMESTAMP, "
-                    + SECRET_QR_CODE +" INTEGER DEFAULT 0, "
-                    + FAVORITE_QR_CODE +" INTEGER DEFAULT 0"
-                    + ")";
-
-    public static final String GENERAL_QR_SCAN_TABLE =
-            "CREATE TABLE IF NOT EXISTS "+ SCAN_GENERAL_QR_CODE_TABLE_NAME +"("
-                    + QR_ID_COLUMN +" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + GENERATED_QR_IMG +" BLOB, "
+            "CREATE TABLE IF NOT EXISTS " + CREATE_GENERAL_QR_CODE_TABLE_NAME + "("
+                    + QR_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + GENERAL_QR_CODE_CONTENT + " VARCHAR(1500), "
+                    + GENERATED_QR_IMG + " BLOB, "
                     + QR_IMG_NAME + " VARCHAR(50), "
                     + QR_IMG_GENERATED_TIMESTAMP + " DATETIME DEFAULT CURRENT_TIMESTAMP, "
-                    + SECRET_QR_CODE +" INTEGER DEFAULT 0, "
-                    + FAVORITE_QR_CODE +" INTEGER DEFAULT 0"
+                    + SECRET_QR_CODE + " INTEGER DEFAULT 0, "
+                    + FAVORITE_QR_CODE + " INTEGER DEFAULT 0"
+                    + ")";
+
+    // this table will holds all the secret and general scanned QR Codes
+    public static final String GENERAL_QR_SCAN_TABLE =
+            "CREATE TABLE IF NOT EXISTS " + SCAN_GENERAL_QR_CODE_TABLE_NAME + "("
+                    + QR_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + GENERATED_QR_IMG + " BLOB, "
+                    + QR_IMG_NAME + " VARCHAR(50), "
+                    + QR_IMG_GENERATED_TIMESTAMP + " DATETIME DEFAULT CURRENT_TIMESTAMP, "
+                    + SECRET_QR_CODE + " INTEGER DEFAULT 0, "
+                    + FAVORITE_QR_CODE + " INTEGER DEFAULT 0"
                     + ")";
 
 }

@@ -62,7 +62,7 @@ public class GeneralQRCodeDetails extends QRImgShare {
         db = new DBHelper(this, DATABASE_NAME, null, DATABASE_VERSION);
         qrService = new QRServiceImpl();
 
-        mQrShareBtn = (Button) findViewById(R.id.btn_qr_unlock);
+        mQrShareBtn = findViewById(R.id.btn_qr_unlock);
         mQrShareBtn.setText("Share");
         // secret qr id to display its details
         int secret_qr_details_by_id = getIntent().getIntExtra("qr_details_by_id", 0);

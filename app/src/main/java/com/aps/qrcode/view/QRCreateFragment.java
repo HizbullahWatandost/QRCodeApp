@@ -58,21 +58,21 @@ public class QRCreateFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_qrcreate, container, false);
 
-        qrOwnerSpinner = (Spinner) view.findViewById(R.id.edit_txt_client_type);
-        companyCategorySpinner = (Spinner) view.findViewById(R.id.spinner_company_category);
-        provinceSpinner = (Spinner) view.findViewById(R.id.spinner_province);
-        districtSpinner = (Spinner) view.findViewById(R.id.spinner_district);
-        bankMemberSpinner = (Spinner) view.findViewById(R.id.spinner_bank_members);
+        qrOwnerSpinner = view.findViewById(R.id.edit_txt_client_type);
+        companyCategorySpinner = view.findViewById(R.id.spinner_company_category);
+        provinceSpinner = view.findViewById(R.id.spinner_province);
+        districtSpinner = view.findViewById(R.id.spinner_district);
+        bankMemberSpinner = view.findViewById(R.id.spinner_bank_members);
 
-        clientNameEditTxt = (EditText) view.findViewById(R.id.edit_txt_client_name);
-        companyNameEditTxt = (EditText) view.findViewById(R.id.edit_txt_company_name);
-        mobileEditTxt = (EditText) view.findViewById(R.id.edit_txt_mobile);
-        emailEditTxt = (EditText) view.findViewById(R.id.edit_txt_email);
-        accountNoEditTxt = (EditText) view.findViewById(R.id.edit_txt_account_number);
-        amountEditTxt = (EditText) view.findViewById(R.id.edit_txt_amount);
+        clientNameEditTxt = view.findViewById(R.id.edit_txt_client_name);
+        companyNameEditTxt = view.findViewById(R.id.edit_txt_company_name);
+        mobileEditTxt = view.findViewById(R.id.edit_txt_mobile);
+        emailEditTxt = view.findViewById(R.id.edit_txt_email);
+        accountNoEditTxt = view.findViewById(R.id.edit_txt_account_number);
+        amountEditTxt = view.findViewById(R.id.edit_txt_amount);
 
 
-        qrCreateBtn = (Button) view.findViewById(R.id.btn_qr_create);
+        qrCreateBtn = view.findViewById(R.id.btn_qr_create);
 
         addItemsInSpinner(R.array.qr_code_owner, qrOwnerSpinner);
         addListenerOnQrOwnerSpinnerItemSelection();
@@ -89,11 +89,11 @@ public class QRCreateFragment extends Fragment {
         addItemsInSpinner(R.array.bank_members, bankMemberSpinner);
         addListenerOnSpinnerItemSelection(bankMemberSpinner);
 
-        RadioGroup currencyRadioGroup = (RadioGroup) view.findViewById(R.id.rg_currency);
+        RadioGroup currencyRadioGroup = view.findViewById(R.id.rg_currency);
         int currencySelect = currencyRadioGroup.getCheckedRadioButtonId();
-        selectedCurrency = (RadioButton) view.findViewById(currencySelect);
+        selectedCurrency = view.findViewById(currencySelect);
 
-        policyCheck = (CheckBox) view.findViewById(R.id.chb_payment_qr_code_policy);
+        policyCheck = view.findViewById(R.id.chb_payment_qr_code_policy);
 
 
         qrCreateBtn.setOnClickListener(new View.OnClickListener() {

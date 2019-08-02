@@ -25,7 +25,6 @@ import android.widget.Toast;
 import com.aps.qrcode.R;
 import com.aps.qrcode.adapter.ScannedGeneralQRCodeAdapter;
 import com.aps.qrcode.helper.DBHelper;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrScan;
 import com.aps.qrcode.util.RecyclerDividerItemDecoration;
 import com.aps.qrcode.util.RecyclerItemTouchListener;
@@ -52,7 +51,6 @@ public class GeneralQRScanHistory extends AppCompatActivity {
     private TextView noQRScanTxtView;
     //QR Operations popup window
     private PopupWindow QrActionPopUp;
-    private ZXingHelper zXingHelper;
     //close button for about us popup window
     private View.OnClickListener cancel_button_click_listenerA = new View.OnClickListener() {
         public void onClick(View v) {
@@ -80,8 +78,6 @@ public class GeneralQRScanHistory extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         toggleEmptyPaymentGeneratedQRCode();
-
-        zXingHelper = new ZXingHelper();
 
         /**
          * On long press on RecyclerView item, open alert dialog
@@ -179,9 +175,9 @@ public class GeneralQRScanHistory extends AppCompatActivity {
             layout = inflater.inflate(R.layout.recycler_item_on_click_popup, (ViewGroup) findViewById(R.id.popup_element));
             QrActionPopUp = new PopupWindow(layout, (int) (width * .8), (int) (height * .7), true);
             QrActionPopUp.showAtLocation(layout, Gravity.CENTER, 0, 0);
-            closePopupTxtView = (TextView) layout.findViewById(R.id.txt_vw_close_qr_action_popup);
-            QrImgNameTxtView = (TextView) layout.findViewById(R.id.txt_vw_qr_code_img_name);
-            QrImgView = (ImageView) layout.findViewById(R.id.img_vw_qr_img);
+            closePopupTxtView = layout.findViewById(R.id.txt_vw_close_qr_action_popup);
+            QrImgNameTxtView = layout.findViewById(R.id.txt_vw_qr_code_img_name);
+            QrImgView = layout.findViewById(R.id.img_vw_qr_img);
             GeneralQrScan secretQrScanId = generalQrScanList.get(position);
             String qr_gen_img_name = secretQrScanId.getQrImgName();
             QrImgNameTxtView.setText(qr_gen_img_name);
@@ -189,7 +185,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
 
             closePopupTxtView.setOnClickListener(cancel_button_click_listenerA);
 
-            editBtn = (Button) layout.findViewById(R.id.edit_qr_code);
+            editBtn = layout.findViewById(R.id.edit_qr_code);
             editBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -197,7 +193,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
                 }
             });
 
-            deleteBtn = (Button) layout.findViewById(R.id.btn_qr_delete);
+            deleteBtn = layout.findViewById(R.id.btn_qr_delete);
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -205,7 +201,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
                 }
             });
 
-            addFavoriteBtn = (Button) layout.findViewById(R.id.btn_add_qr_to_fav);
+            addFavoriteBtn = layout.findViewById(R.id.btn_add_qr_to_fav);
             if (secretQrScanId.getFavoriteQr() == 0) {
                 addFavoriteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -229,7 +225,7 @@ public class GeneralQRScanHistory extends AppCompatActivity {
                 });
             }
 
-            detailsBtn = (Button) layout.findViewById(R.id.btn_qr_details);
+            detailsBtn = layout.findViewById(R.id.btn_qr_details);
             detailsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

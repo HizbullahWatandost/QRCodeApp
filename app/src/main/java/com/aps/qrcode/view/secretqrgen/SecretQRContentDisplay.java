@@ -38,9 +38,9 @@ public class SecretQRContentDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_non_payment_qrcontent_display);
 
-        mSecretQrUpdateBtn = (Button) findViewById(R.id.btn_qr_unlock);
-        mQrContentEditTxt = (EditText) findViewById(R.id.edit_txt_qr_content);
-        mQrUpdateHintTxtView = (TextView) findViewById(R.id.txt_vw_qr_update_hing);
+        mSecretQrUpdateBtn = findViewById(R.id.btn_qr_unlock);
+        mQrContentEditTxt = findViewById(R.id.edit_txt_qr_content);
+        mQrUpdateHintTxtView = findViewById(R.id.txt_vw_qr_update_hing);
 
         db = new DBHelper(this, DATABASE_NAME, null,DATABASE_VERSION);
 

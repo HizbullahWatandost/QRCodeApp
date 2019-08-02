@@ -61,7 +61,7 @@ public class ScannerActivity extends AppCompatActivity implements
         capture.decode();
 
         //directing the user to select image from gallery or take image from the camera
-        qrImgSelectBtn = (Button) findViewById(R.id.btn_select_qr_img);
+        qrImgSelectBtn = findViewById(R.id.btn_select_qr_img);
         qrImgSelectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

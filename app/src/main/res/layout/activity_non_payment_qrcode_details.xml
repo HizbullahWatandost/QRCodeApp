@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="Please unlock QR Code in order to update it."
+                android:text="@string/unlock_qr_code_prompt"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:gravity="top|left"
-                android:hint="Write your messages..."
+                android:hint="@string/qr_content_hint"
                 android:inputType="textEmailAddress|textMultiLine"
                 android:lines="15"
                 android:minLines="5"
@@ -48,7 +48,7 @@
                 android:id="@+id/btn_qr_unlock"
                 style="@style/QRImgGenFormBtnStyle"
                 android:layout_marginTop="16dp"
-                android:text="Unlock Secret QR Code" />
+                android:text="@string/unlock_qr_btn" />
 
             <!-- a view to avoid hiding button while scrolling the layout up -->
             <View

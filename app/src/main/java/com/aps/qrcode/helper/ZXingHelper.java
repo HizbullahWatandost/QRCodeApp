@@ -28,11 +28,12 @@ public class ZXingHelper {
 
     /**
      * The method which creates QR Code based on the given properties
-     * @param qrChatacterSet: the chracterset in which the content of QR Code is encode
+     *
+     * @param qrChatacterSet:       the chracterset in which the content of QR Code is encode
      * @param errorCorrectionLevel: the error correction level which helps the user to scan qr code if it is 7% damaged
-     * @param width: the width of the QR Code image
-     * @param height: the height of QR Code image
-     * @param qrContent: the actual content of QR Code image i.e. merchant name, account number and etc.
+     * @param width:                the width of the QR Code image
+     * @param height:               the height of QR Code image
+     * @param qrContent:            the actual content of QR Code image i.e. merchant name, account number and etc.
      * @return the bitmap which can be stored in table and displayed in image view
      * @throws WriterException
      * @throws UnsupportedEncodingException
@@ -40,11 +41,11 @@ public class ZXingHelper {
     public Bitmap createQRImage(String qrChatacterSet, String errorCorrectionLevel, int width, int height, String qrContent) throws WriterException, UnsupportedEncodingException {
         Map<EncodeHintType, Object> hintMap = new EnumMap<EncodeHintType, Object>(EncodeHintType.class);
         hintMap.put(EncodeHintType.CHARACTER_SET, qrChatacterSet);
-        hintMap.put(EncodeHintType.MARGIN,2);
+        hintMap.put(EncodeHintType.MARGIN, 2);
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.valueOf(errorCorrectionLevel));
         BitMatrix bitMatrix = new MultiFormatWriter().encode(
-                new String(qrContent.getBytes(qrChatacterSet),qrChatacterSet),
-                BarcodeFormat.QR_CODE,width,height,hintMap);
+                new String(qrContent.getBytes(qrChatacterSet), qrChatacterSet),
+                BarcodeFormat.QR_CODE, width, height, hintMap);
         BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
         Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
         return bitmap;
@@ -55,11 +56,12 @@ public class ZXingHelper {
      * The user import QR Code image from gallery, then click on read button.
      * The image will be read and displayed in form
      * NOTE: keep it in mind, this method decodes the payment QR Code image.
+     *
      * @param qrImageView
      * @return the content of QR Code image in string format.
      */
-    public String qr2Txt(ImageView qrImageView){
-        Bitmap bitmap = ((BitmapDrawable)qrImageView.getDrawable()).getBitmap();
+    public String qr2Txt(ImageView qrImageView) {
+        Bitmap bitmap = ((BitmapDrawable) qrImageView.getDrawable()).getBitmap();
         try {
             int width = bitmap.getWidth();
             int height = bitmap.getHeight();
@@ -72,6 +74,4 @@ public class ZXingHelper {
             return null;
         }
     }
-
-
 }

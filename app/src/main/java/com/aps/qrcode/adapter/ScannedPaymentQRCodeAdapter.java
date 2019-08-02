@@ -18,16 +18,15 @@ import java.util.Date;
 import java.util.List;
 
 
-
 public class ScannedPaymentQRCodeAdapter extends RecyclerView.Adapter<ScannedPaymentQRCodeAdapter.MyViewHolder> {
 
     private Context mContext;
-    // Retrieving all the generated QR codes and putting them in merchanGenList
-    private List<PaymentQrScan> paymentQrScannedList;
+    // Retrieving all the generated payment QR codes and putting them in merchanGenList
+    private List<PaymentQrScan> mPaymentQrScannedList;
 
     public ScannedPaymentQRCodeAdapter(Context mContext, List<PaymentQrScan> paymentQrScans) {
         this.mContext = mContext;
-        this.paymentQrScannedList = paymentQrScans;
+        this.mPaymentQrScannedList = paymentQrScans;
     }
 
     /**
@@ -53,7 +52,7 @@ public class ScannedPaymentQRCodeAdapter extends RecyclerView.Adapter<ScannedPay
      */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        PaymentQrScan paymentQrScan = paymentQrScannedList.get(position);
+        PaymentQrScan paymentQrScan = mPaymentQrScannedList.get(position);
         holder.QrImgView.setImageBitmap(BitmapFactory.decodeByteArray(paymentQrScan.getQrImg(), 0, paymentQrScan.getQrImg().length));
         holder.QrNameTxtView.setText(paymentQrScan.getQrImgName());
 
@@ -68,7 +67,7 @@ public class ScannedPaymentQRCodeAdapter extends RecyclerView.Adapter<ScannedPay
      */
     @Override
     public int getItemCount() {
-        return paymentQrScannedList.size();
+        return mPaymentQrScannedList.size();
     }
 
     /**

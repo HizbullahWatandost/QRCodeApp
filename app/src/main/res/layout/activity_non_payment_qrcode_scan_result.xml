@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:gravity="top|left"
-                android:hint="Write your messages..."
+                android:hint="@string/qr_content_hint"
                 android:inputType="textEmailAddress|textMultiLine"
                 android:lines="15"
                 android:minLines="5"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="This QR Code is encrypted with a key, in order to decrypt it click on button below and enter the key you received from the QR Code creator or sender."
+                android:text="@string/qr_encrypted_info"
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
@@ -49,14 +49,14 @@
                 android:id="@+id/edit_txt_qr_img_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Save QR Code by a name."
+                android:hint="@string/qr_code_name_hint"
                 android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_qr_decrypt"
                 style="@style/QRImgGenFormBtnStyle"
                 android:layout_marginTop="16dp"
-                android:text="Decrypt QR Code" />
+                android:text="@string/decrypt_qr_btn" />
 
 
             <!-- a view to avoid hiding button while scrolling the layout up -->

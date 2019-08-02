@@ -33,7 +33,6 @@ import static android.support.v4.content.FileProvider.getUriForFile;
  * The ImagePickerActivity is used to pickup image (1. Clicking the picture and 2. picking the picture from gallery)
  */
 public class ImagePickerActivity extends AppCompatActivity {
-    private static final String TAG = ImagePickerActivity.class.getSimpleName();
     public static final String INTENT_IMAGE_PICKER_OPTION = "image_picker_option";
     public static final String INTENT_ASPECT_RATIO_X = "aspect_ratio_x";
     public static final String INTENT_ASPECT_RATIO_Y = "aspect_ratio_Y";
@@ -42,20 +41,59 @@ public class ImagePickerActivity extends AppCompatActivity {
     public static final String INTENT_SET_BITMAP_MAX_WIDTH_HEIGHT = "set_bitmap_max_width_height";
     public static final String INTENT_BITMAP_MAX_WIDTH = "max_width";
     public static final String INTENT_BITMAP_MAX_HEIGHT = "max_height";
-
-
     public static final int REQUEST_IMAGE_CAPTURE = 0;
     public static final int REQUEST_GALLERY_IMAGE = 1;
-
+    private static final String TAG = ImagePickerActivity.class.getSimpleName();
+    public static String fileName;
     private boolean lockAspectRatio = false, setBitmapMaxWidthHeight = false;
     private int ASPECT_RATIO_X = 16, ASPECT_RATIO_Y = 9, bitmapMaxWidth = 1000, bitmapMaxHeight = 1000;
     private int IMAGE_COMPRESSION = 80;
-    public static String fileName;
 
-    public interface PickerOptionListener {
-        void onTakeCameraSelected();
+    public static void showImagePickerOptions(Context context, PickerOptionListener listener) {
+        // setup the alert builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getString(R.string.lbl_set_profile_photo));
 
-        void onChooseGallerySelected();
+        // add a list
+        String[] animals = {context.getString(R.string.lbl_take_camera_picture), context.getString(R.string.lbl_choose_from_gallery)};
+        builder.setItems(animals, (dialog, which) -> {
+            switch (which) {
+                case 0:
+                    listener.onTakeCameraSelected();
+                    break;
+                case 1:
+                    listener.onChooseGallerySelected();
+                    break;
+            }
+        });
+
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private static String queryName(ContentResolver resolver, Uri uri) {
+        Cursor returnCursor =
+                resolver.query(uri, null, null, null, null);
+        assert returnCursor != null;
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        returnCursor.moveToFirst();
+        String name = returnCursor.getString(nameIndex);
+        returnCursor.close();
+        return name;
+    }
+
+    /**
+     * Calling this method will delete the images from cache directory
+     * useful to clear some memory
+     */
+    public static void clearCache(Context context) {
+        File path = new File(context.getExternalCacheDir(), "camera");
+        if (path.exists() && path.isDirectory()) {
+            for (File child : path.listFiles()) {
+                child.delete();
+            }
+        }
     }
 
     @Override
@@ -83,29 +121,6 @@ public class ImagePickerActivity extends AppCompatActivity {
         } else {
             chooseImageFromGallery();
         }
-    }
-
-    public static void showImagePickerOptions(Context context, PickerOptionListener listener) {
-        // setup the alert builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(context.getString(R.string.lbl_set_profile_photo));
-
-        // add a list
-        String[] animals = {context.getString(R.string.lbl_take_camera_picture), context.getString(R.string.lbl_choose_from_gallery)};
-        builder.setItems(animals, (dialog, which) -> {
-            switch (which) {
-                case 0:
-                    listener.onTakeCameraSelected();
-                    break;
-                case 1:
-                    listener.onChooseGallerySelected();
-                    break;
-            }
-        });
-
-        // create and show the alert dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
     private void takeCameraImage() {
@@ -236,27 +251,9 @@ public class ImagePickerActivity extends AppCompatActivity {
         return getUriForFile(ImagePickerActivity.this, getPackageName() + ".provider", image);
     }
 
-    private static String queryName(ContentResolver resolver, Uri uri) {
-        Cursor returnCursor =
-                resolver.query(uri, null, null, null, null);
-        assert returnCursor != null;
-        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-        returnCursor.moveToFirst();
-        String name = returnCursor.getString(nameIndex);
-        returnCursor.close();
-        return name;
-    }
+    public interface PickerOptionListener {
+        void onTakeCameraSelected();
 
-    /**
-     * Calling this method will delete the images from cache directory
-     * useful to clear some memory
-     */
-    public static void clearCache(Context context) {
-        File path = new File(context.getExternalCacheDir(), "camera");
-        if (path.exists() && path.isDirectory()) {
-            for (File child : path.listFiles()) {
-                child.delete();
-            }
-        }
+        void onChooseGallerySelected();
     }
 }

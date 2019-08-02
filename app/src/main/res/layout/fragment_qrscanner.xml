@@ -33,7 +33,7 @@
             android:paddingTop="5dp"
             android:paddingEnd="15dp"
             android:paddingBottom="5dp"
-            android:text="Scan QR Code"
+            android:text="@string/scan_qrcode_btn"
             android:textColor="@color/whiteSmoke" />
     </RelativeLayout>
 

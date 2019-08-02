@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aps.qrcode.R;
-import com.aps.qrcode.helper.ZXingHelper;
 import com.aps.qrcode.model.GeneralQrScan;
 
 import java.text.ParseException;
@@ -23,12 +22,11 @@ public class ScannedGeneralQRCodeAdapter extends RecyclerView.Adapter<ScannedGen
 
     private Context mContext;
     // Retrieving all the nonpayment generated QR codes and putting them in merchanGenList
-    private List<GeneralQrScan> generalQrScannedList;
-    private ZXingHelper zXingHelper;
+    private List<GeneralQrScan> mGeneralQrScannedList;
 
     public ScannedGeneralQRCodeAdapter(Context mContext, List<GeneralQrScan> generalQrScans) {
         this.mContext = mContext;
-        this.generalQrScannedList = generalQrScans;
+        this.mGeneralQrScannedList = generalQrScans;
     }
 
     /**
@@ -54,7 +52,7 @@ public class ScannedGeneralQRCodeAdapter extends RecyclerView.Adapter<ScannedGen
      */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        GeneralQrScan generalQrScan = generalQrScannedList.get(position);
+        GeneralQrScan generalQrScan = mGeneralQrScannedList.get(position);
         holder.QrImgView.setImageBitmap(BitmapFactory.decodeByteArray(generalQrScan.getQrImg(), 0, generalQrScan.getQrImg().length));
         holder.QrNameTxtView.setText(generalQrScan.getQrImgName());
         // Formatting and displaying timestamp
@@ -68,7 +66,7 @@ public class ScannedGeneralQRCodeAdapter extends RecyclerView.Adapter<ScannedGen
      */
     @Override
     public int getItemCount() {
-        return generalQrScannedList.size();
+        return mGeneralQrScannedList.size();
     }
 
     /**

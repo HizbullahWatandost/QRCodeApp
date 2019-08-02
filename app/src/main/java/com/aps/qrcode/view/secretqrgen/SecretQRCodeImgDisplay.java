@@ -63,10 +63,10 @@ public class SecretQRCodeImgDisplay extends AppCompatActivity {
          */
         qrCreateContent = getIntent().getStringExtra("qrCodeContent");
 
-        qrImgView = (ImageView) findViewById(R.id.img_vw_qr_img);
-        qrNameEditTxt = (EditText) findViewById(R.id.edit_txt_qr_img_name);
-        btnSave = (Button) findViewById(R.id.btn_qr_save);
-        btnShare = (Button) findViewById(R.id.btn_qr_share);
+        qrImgView = findViewById(R.id.img_vw_qr_img);
+        qrNameEditTxt = findViewById(R.id.edit_txt_qr_img_name);
+        btnSave = findViewById(R.id.btn_qr_save);
+        btnShare = findViewById(R.id.btn_qr_share);
 
         int secret_qr_id = getIntent().getIntExtra("secret_qr_img_id", 0);
         String qr_img_name = getIntent().getStringExtra("edit_txt_qr_img_name");
