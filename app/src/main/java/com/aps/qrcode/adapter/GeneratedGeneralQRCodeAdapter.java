@@ -30,6 +30,7 @@ public class GeneratedGeneralQRCodeAdapter extends RecyclerView.Adapter<Generate
     }
 
     /**
+     * --test
      * MyViewHolder inflate the custom recycler item which is created for holding the QR Code image
      * details which are displayed in history
      *
